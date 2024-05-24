@@ -1,0 +1,45 @@
+[
+    {
+      "tyrename": "Ceat",
+      "image": "/TyreImages/tyre-1-a.png",
+      "description": "Sample data description"
+    },
+    {
+      "tyrename": "MRF",
+      "image": "/TyreImages/tyre-2-a.png",
+      "description": "Sample data description"
+    },
+    {
+      "tyrename": "Maxxis",
+      "image": "/TyreImages/tyre-3-a.png",
+      "description": "Sample data description"
+    },
+    {
+      "tyrename": "Dunlop",
+      "image": "/TyreImages/tyre-4-a.png",
+      "description": "Sample data description"
+    },
+    {
+      "tyrename": "Pirelli",
+      "image": "/TyreImages/tyre-5-a.png",
+      "description": "Sample data description"
+    },
+    {
+      "tyrename": "Ferentino",
+      "image": "/TyreImages/tyre-6-a.png",
+      "description": "Sample data description"
+    },
+    {
+      "tyrename": "Bridgestone",
+      "image": "/TyreImages/tyre-7-a.png",
+      "description": "Sample data description"
+    }
+    ,
+    {
+      "tyrename": "Kumiko",
+      "image": "/TyreImages/tyre-8-a.png",
+      "description": "Sample data description"
+    }
+
+  ]
+  
