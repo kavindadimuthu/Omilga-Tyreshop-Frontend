@@ -8,7 +8,7 @@ import Badge from '/ServiceImages/badge.png'
 function Servicequalities() {
     return (
         <div className='servicequalities-container mt-[30px] flex justify-center '>
-            <div className='w-[75vw] flex justify-around border-solid border-2 border-sky-500'>
+            <div className='w-[75vw] flex justify-around '>
                 <Servicequalitypoints imagename={Truck} tag="DELIVERY TO YOUR DOORSTEP" />
                 <Servicequalitypoints imagename={Customercare} tag="CUSTOMER SUPPORT" />
                 <Servicequalitypoints imagename={Card} tag="SECURED PAYMENT" />

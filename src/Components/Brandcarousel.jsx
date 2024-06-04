@@ -39,7 +39,7 @@ function Brandcarousel() {
                 autoPlay={true}
                 autoPlaySpeed={3000}
                 keyBoardControl={true}
-                containerClass="carousel-container w-[75vw] border-solid border-2 border-sky-500"
+                containerClass="carousel-container w-[75vw] "
                 removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                 // deviceType={this.props.deviceType}
                 dotListClass="custom-dot-list-style"

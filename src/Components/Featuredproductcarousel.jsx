@@ -8,7 +8,7 @@ function Featuredproductcarousel() {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 5,
       slidesToSlide: 1
     },
     tablet: {
@@ -39,7 +39,7 @@ function Featuredproductcarousel() {
         keyBoardControl={true}
         // customTransition="all .5"
         // transitionDuration={500}
-        containerClass="carousel-container w-[75vw] border-solid border-2 border-sky-500"
+        containerClass="carousel-container w-[75vw]"
         removeArrowOnDeviceType={["tablet", "mobile"]}
         // deviceType="desktop"
         dotListClass="custom-dot-list-style"
@@ -48,8 +48,8 @@ function Featuredproductcarousel() {
       >
 
         {products.map((product, index) => (
-          <div key={index} >
-            <Productcard tyrename={product.tyrename} image={product.image} description={product.description} />
+          <div key={index} style={{ padding: "0 5px" }} >
+            <Productcard tyrename={product.tyrename} image={product.image} description={product.description} oldprice={product.oldprice} newprice={product.newprice} />
           </div>
         ))}
 

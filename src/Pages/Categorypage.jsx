@@ -5,9 +5,10 @@ import Header from '../Components/Header'
 function Categorypage() {
   return (
     <div>
-        <Header/>
-        Categorypage
-        <Footer/>
+      <Header />
+      Categorypage
+
+      <Footer />
     </div>
   )
 }
