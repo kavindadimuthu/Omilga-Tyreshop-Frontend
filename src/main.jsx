@@ -8,6 +8,7 @@ import './input.css'
 
 import Home from './Home.jsx'
 import Productpage from './Pages/Productpage.jsx'
+import Singleproductpage from './Pages/Singleproductpage.jsx'
 import Categorypage from './Pages/Categorypage.jsx'
 import Aboutuspage from './Pages/Aboutuspage.jsx'
 import Contactpage from './Pages/Contactpage.jsx'
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/user",
     element: <Userpage />,
+  },
+  {
+    path: "/singleproduct/:id",
+    element: <Singleproductpage />,
   },
 ]);
 

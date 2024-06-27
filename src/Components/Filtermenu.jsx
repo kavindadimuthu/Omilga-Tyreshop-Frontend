@@ -45,10 +45,11 @@ const Filtermenu = () => {
     const tabPaneStyle = {
         backgroundColor: '#333333',
         padding: '16px',
-        borderRadius: '4px'
+        borderRadius: '6px'
       };
 
     const selectBoxStyles = {
+        marginTop: '1em',
         display: 'flex',
         columnGap: '1em',
     };
@@ -61,7 +62,7 @@ const Filtermenu = () => {
                 style={tabPaneStyle}
             >
                 <div>
-                    <span className='text-white'>Your path to the perfect set of tyres begins here</span>
+                    <span className='text-white text-[1.1em]'>Your path to the perfect set of tyres begins here</span>
                     <div style={selectBoxStyles}>
                         <Selectdropdown placeholder="Rim Size" options={options1} />
                         <Selectdropdown placeholder="Tire Width" options={options2} />
@@ -77,7 +78,7 @@ const Filtermenu = () => {
             >
                 <div>
                     {/* Different content for Tab 2 */}
-                    <span className='text-white'>Find the best tyres for your vehicle</span>
+                    <span className='text-white text-[1.1em]'>Find the best tyres for your vehicle</span>
                     <div style={selectBoxStyles}>
                         <Selectdropdown placeholder="Make" options={options4} />
                         <Selectdropdown placeholder="Model" options={options5} />
