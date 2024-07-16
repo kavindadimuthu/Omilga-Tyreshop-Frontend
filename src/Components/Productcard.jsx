@@ -24,13 +24,16 @@ const Productcard = (props) => {
       <img src={props.image} alt="" style={imageStyle} />
       <div className='mt-2 py-2 px-4'>
         {/* <h1>Product ID : {props.tyreid}</h1> */}
-        <h1 className='mt-[2px] font-bold text-[1.25em]'>{props.tyrename}</h1>
-        <span className='font-regular text-[0.9em] text-gray-600'>{props.sizeinfo}</span>
+        <h1 className='mt-[2px] font-bold text-[1.2em]'>{props.tyrename}</h1>
+        <span>
+          <h3 className='font-regular text-[1em] text-gray-600'>{props.tyreWidth}/{props.profile}-{props.rimSize} | {props.tube? 'Tube':'Tubeless'}</h3>
+          <h4 className='font-bold text-[0.7em] text-gray-600'>{props.vehicleCategory}</h4>
+        </span>
       </div>
-      <div className='flex justify-between items-end py-4 px-4 bg-white rounded-b-[1em] border-2 border-[#f1f1f1]'>
+      <div className='flex justify-between items-end py-3 px-3 bg-white rounded-b-[1em] border-2 border-[#f1f1f1]'>
         <span>
           <h2 className='text-[0.75em]'><s>Rs.{props.oldprice}</s></h2>
-          <h2 className='font-medium text-red-400 text-[1.1em]'>Rs.{props.newprice}</h2>
+          <h2 className='font-medium text-red-400 text-[1.2em]'>Rs.{props.newprice}</h2>
         </span>
         <Button href={props.tyreurl} className='flex items-center justify-center p-[6%] bg-[#0055aa] text-white font-semibold'>
           See Details

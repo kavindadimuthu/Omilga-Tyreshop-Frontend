@@ -6,34 +6,6 @@ const items = [
     key: 'sub1',
     label: 'Motorbike',
     icon: <MailOutlined />,
-    children: [
-      {
-        key: 'g1',
-        label: 'Tyres',
-        type: 'group',
-        children: [
-          {
-            key: '1',
-            label: 'Tubeless Tyres',
-          },
-          {
-            key: '2',
-            label: 'Tubed Tyres',
-          },
-        ],
-      },
-      {
-        key: 'g2',
-        label: 'Tubes',
-        type: 'group',
-        children: [
-          {
-            key: '3',
-            label: 'Motorbike Tubes',
-          },
-        ],
-      },
-    ],
   },
 
   {
@@ -44,34 +16,6 @@ const items = [
     key: 'sub2',
     label: 'Scooter',
     icon: <MailOutlined />,
-    children: [
-      {
-        key: 'g1',
-        label: 'Tyres',
-        type: 'group',
-        children: [
-          {
-            key: '1',
-            label: 'Tubeless Tyres',
-          },
-          {
-            key: '2',
-            label: 'Tubed Tyres',
-          },
-        ],
-      },
-      {
-        key: 'g2',
-        label: 'Tubes',
-        type: 'group',
-        children: [
-          {
-            key: '3',
-            label: 'Scooter Tubes',
-          },
-        ],
-      },
-    ],
   },
 
   {
@@ -82,34 +26,7 @@ const items = [
     key: 'sub3',
     label: 'Threewheel',
     icon: <MailOutlined />,
-    children: [
-      {
-        key: 'g1',
-        label: 'Tyres',
-        type: 'group',
-        children: [
-          {
-            key: '1',
-            label: 'Tubeless Tyres',
-          },
-          {
-            key: '2',
-            label: 'Tubed Tyres',
-          },
-        ],
-      },
-      {
-        key: 'g2',
-        label: 'Tubes',
-        type: 'group',
-        children: [
-          {
-            key: '3',
-            label: 'Threewheel Tubes',
-          },
-        ],
-      },
-    ],
+
   },
 
   {
@@ -120,34 +37,7 @@ const items = [
     key: 'sub4',
     label: 'Bicycle',
     icon: <MailOutlined />,
-    children: [
-      {
-        key: 'g1',
-        label: 'Tyres',
-        type: 'group',
-        children: [
-          {
-            key: '1',
-            label: 'Tubeless Tyres',
-          },
-          {
-            key: '2',
-            label: 'Tubed Tyres',
-          },
-        ],
-      },
-      {
-        key: 'g2',
-        label: 'Tubes',
-        type: 'group',
-        children: [
-          {
-            key: '3',
-            label: 'Bicycle Tubes',
-          },
-        ],
-      },
-    ],
+    
   },
   
   {
@@ -160,11 +50,14 @@ const Sidecategorymenu = () => {
   const onClick = (e) => {
     console.log('click ', e);
   };
+
+  
   return (
     <Menu
       onClick={onClick}
       style={{
-        width: 256,
+        width: 220,
+        fontSize: '15px'
       }}
     //   defaultSelectedKeys={['1']}
     //   defaultOpenKeys={['sub1']}

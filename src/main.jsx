@@ -8,6 +8,7 @@ import './input.css'
 
 import Home from './Home.jsx'
 import Productpage from './Pages/Productpage.jsx'
+import Filterpage from './Pages/Filterpage.jsx';
 import Singleproductpage from './Pages/Singleproductpage.jsx'
 import Categorypage from './Pages/Categorypage.jsx'
 import Aboutuspage from './Pages/Aboutuspage.jsx'
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <Productpage />,
+  },
+  {
+    path: "/filter",
+    element: <Filterpage />,
   },
   {
     path: "/categories",
