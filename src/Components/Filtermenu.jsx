@@ -1,93 +1,224 @@
-import React, { useState } from 'react';
-import { Tabs , Button } from "antd";
-import Selectdropdown from "./Selectdropdown";
-const onChange = (key) => {
-    console.log(key);
-};
+import React, { useState, useEffect } from 'react';
+import { Tabs, Button } from 'antd';
+import Selectdropdown from './Selectdropdown';
+import axios from 'axios';
+import Productcard from './Productcard';
+
 const Filtermenu = () => {
+  const [activeTabKey, setActiveTabKey] = useState('1');
+  const [tyreWidthOptions, setTyreWidthOptions] = useState([]);
+  const [tyreProfileOptions, setTyreProfileOptions] = useState([]);
+  const [rimSizeOptions, setRimSizeOptions] = useState([]);
+  const [selectedTyreWidth, setSelectedTyreWidth] = useState(null);
+  const [selectedTyreProfile, setSelectedTyreProfile] = useState(null);
+  const [selectedRimSize, setSelectedRimSize] = useState(null);
+  const [selectedTubeType, setSelectedTubeType] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const [activeTabKey, setActiveTabKey] = useState("1");
+  const options4 = [
+    { value: 'toyota', label: 'Toyota' },
+    { value: 'honda', label: 'Honda' },
+    { value: 'ford', label: 'Ford' },
+  ];
 
-    const options1 = [
-        { value: '15', label: '15 inches' },
-        { value: '16', label: '16 inches' },
-        { value: '17', label: '17 inches' },
-    ];
+  const options5 = [
+    { value: 'corolla', label: 'Corolla' },
+    { value: 'civic', label: 'Civic' },
+    { value: 'focus', label: 'Focus' },
+  ];
 
-    const options2 = [
-        { value: '185', label: '185 mm' },
-        { value: '195', label: '195 mm' },
-        { value: '205', label: '205 mm' },
-    ];
+  const options6 = [
+    { value: 'false', label: 'Tubeless' },
+    { value: 'true', label: 'Tubed' },
+  ];
 
-    const options3 = [
-        { value: '55', label: '55%' },
-        { value: '60', label: '60%' },
-        { value: '65', label: '65%' },
-    ];
-
-    const options4 = [
-        { value: 'toyota', label: 'Toyota' },
-        { value: 'honda', label: 'Honda' },
-        { value: 'ford', label: 'Ford' },
-    ];
-
-    const options5 = [
-        { value: 'corolla', label: 'Corolla' },
-        { value: 'civic', label: 'Civic' },
-        { value: 'focus', label: 'Focus' },
-    ];
-
-    const handleTabChange = (key) => {
-        setActiveTabKey(key);
+  useEffect(() => {
+    const fetchTyreWidths = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/tyre/tyreWidths');
+        const widths = response.data.map(width => ({ value: width, label: `${width}` }));
+        setTyreWidthOptions(widths);
+      } catch (error) {
+        console.error('Failed to fetch tyre widths:', error);
+      }
     };
 
-    const tabPaneStyle = {
-        backgroundColor: '#333333',
-        padding: '16px',
-        borderRadius: '6px'
-      };
+    fetchTyreWidths();
+  }, []);
 
-    const selectBoxStyles = {
-        marginTop: '1em',
-        display: 'flex',
-        columnGap: '1em',
+  useEffect(() => {
+    const fetchTyreProfiles = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/tyre/tyreProfiles');
+        const profiles = response.data.map(profile => ({ value: profile, label: `${profile}` }));
+        setTyreProfileOptions(profiles);
+      } catch (error) {
+        console.error('Failed to fetch tyre profiles:', error);
+      }
     };
 
-    return (
-        <Tabs onChange={handleTabChange} type="card" activeKey={activeTabKey}>
-            <Tabs.TabPane
-                tab="FIND BY TYRE DIMENSIONS"
-                key="1"
-                style={tabPaneStyle}
-            >
-                <div>
-                    <span className='text-white text-[1.1em]'>Your path to the perfect set of tyres begins here</span>
-                    <div style={selectBoxStyles}>
-                        <Selectdropdown placeholder="Rim Size" options={options1} />
-                        <Selectdropdown placeholder="Tire Width" options={options2} />
-                        <Selectdropdown placeholder="Profile" options={options3} />
-                        <Button type="primary" className='bg-[#0055AA]'>Filter</Button>
-                    </div>
-                </div>
-            </Tabs.TabPane>
-            <Tabs.TabPane
-                tab="FIND BY VEHICLE MODEL"
-                key="2"
-                style={tabPaneStyle}
-            >
-                <div>
-                    {/* Different content for Tab 2 */}
-                    <span className='text-white text-[1.1em]'>Find the best tyres for your vehicle</span>
-                    <div style={selectBoxStyles}>
-                        <Selectdropdown placeholder="Make" options={options4} />
-                        <Selectdropdown placeholder="Model" options={options5} />
-                        <Button type="primary">Filter</Button>
-                    </div>
-                </div>
-            </Tabs.TabPane>
-        </Tabs>
-    );
+    fetchTyreProfiles();
+  }, []);
+
+  useEffect(() => {
+    const fetchRimSizes = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/tyre/rimSizes');
+        const rimSizes = response.data.map(rimSize => ({ value: rimSize, label: `${rimSize}`}));
+        setRimSizeOptions(rimSizes);
+      } catch (error) {
+        console.error('Failed to fetch rim sizes: ', error);
+      }
+    };
+
+    fetchRimSizes();    
+  }, []);
+
+  const handleTabChange = (key) => {
+    setActiveTabKey(key);
+  };
+
+  const handleFilterClick = async () => {
+    setLoading(true);
+
+    try {
+      const response = await axios.get('http://localhost:5000/api/tyre/filterTyres', {
+        params: {
+          tyreWidth: selectedTyreWidth,
+          profile: selectedTyreProfile,
+          rimSize: selectedRimSize,
+          tube: selectedTubeType,
+        },
+      });
+
+      console.log('API Response:', response.data); 
+
+      if (response.data && Array.isArray(response.data.tyres)) {
+        const productsWithImages = response.data.tyres.map(product => {
+          if (product.image && product.image.data) {
+            // Convert binary data to base64 string
+            const binaryData = new Uint8Array(product.image.data.data).reduce((data, byte) => {
+              return data + String.fromCharCode(byte);
+            }, '');
+            const base64Image = `data:${product.image.contentType};base64,${btoa(binaryData)}`;
+
+            return {
+              ...product,
+              image: base64Image
+            };
+          }
+          return product;
+        });
+        setFilteredProducts(productsWithImages);
+      } else {
+        setError('Unexpected response format');
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch filtered tyres:', error);
+      setError('Failed to fetch filtered tyres');
+      setLoading(false);
+    }
+  };
+
+  const tabPaneStyle = {
+    backgroundColor: '#333333',
+    padding: '16px',
+    borderRadius: '6px'
+  };
+
+  const selectBoxStyles = {
+    marginTop: '1em',
+    display: 'flex',
+    columnGap: '1em',
+  };
+
+
+  return (
+    <div>
+      <Tabs onChange={handleTabChange} type="card" activeKey={activeTabKey}>
+        <Tabs.TabPane
+          tab="FIND BY TYRE DIMENSIONS"
+          key="1"
+          style={tabPaneStyle}
+        >
+          <div>
+            <span className='text-white text-[1.1em]'>Your path to the perfect set of tyres begins here</span>
+            <div style={selectBoxStyles}>
+
+            <Selectdropdown placeholder="Tubeless or tubed" options={options6} 
+                onChange={(value) => {
+                  setSelectedTubeType(value);
+                  if (value === 'true') {
+                    setSelectedTyreProfile(null);
+                  }
+                }} 
+              />
+
+              <Selectdropdown placeholder="Tire Width" options={tyreWidthOptions} 
+                onChange={(value) => setSelectedTyreWidth(value)} 
+              />
+
+              {selectedTubeType !== "true" && (
+              <Selectdropdown placeholder="Profile" options={tyreProfileOptions} 
+                onChange={(value) => setSelectedTyreProfile(value)} 
+              />
+              )}
+              
+              <Selectdropdown placeholder="Rim Size" options={rimSizeOptions} 
+                onChange={(value) => setSelectedRimSize(value)} 
+              />
+              
+             
+              <Button type="primary" className='bg-[#0055AA]' onClick={handleFilterClick}>Filter</Button>
+              
+
+            </div>
+          </div>
+        </Tabs.TabPane>
+        <Tabs.TabPane
+          tab="FIND BY VEHICLE MODEL"
+          key="2"
+          style={tabPaneStyle}
+        >
+          <div>
+            {/* Different content for Tab 2 */}
+            <span className='text-white text-[1.1em]'>Find the best tyres for your vehicle</span>
+            <div style={selectBoxStyles}>
+              <Selectdropdown placeholder="Make" options={options4} />
+              <Selectdropdown placeholder="Model" options={options5} />
+              <Button type="primary">Filter</Button>
+            </div>
+          </div>
+        </Tabs.TabPane>
+      </Tabs>
+
+      {loading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
+
+      <div className='grid grid-cols-4 gap-4 p-4'>
+        {filteredProducts.map((product, index) => (
+          <div key={index}>
+            <Productcard 
+              tyrename={product.tyreBrand} 
+              image={product.image} 
+              tyreWidth={product.tyreWidth}
+              profile={product.profile}
+              rimSize={product.rimSize} 
+              tube={product.tube} 
+              vehicleCategory={product.vehicleCategory}
+              newprice={product.price}
+              oldprice={product.oldPrice || null} // Assuming oldPrice is available, otherwise set to null
+              tyreurl={`details/${product.tyreId}`} // Assuming there's a details page
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Filtermenu;
