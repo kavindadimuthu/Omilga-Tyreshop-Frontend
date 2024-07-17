@@ -30,6 +30,28 @@ const TableRow = ({ user }) => (
   </tr>
 );
 
+async function fetchUsers() {
+  try {
+    // Fetching the data from the JSON file
+    const response = await fetch('/data/mockdata.json');
+    
+    // Parsing the JSON response
+    const data = await response.json();
+    
+    // Returning the data
+    return data;
+  } catch (error) {
+    // Handling errors
+    console.error('Error fetching users:', error);
+  }
+}
+
+// Using the fetchUsers function
+fetchUsers().then(users => {
+  console.log(users); // Output the users data
+});
+
+
 function Userpage() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
