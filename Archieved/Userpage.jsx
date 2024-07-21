@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import getUsers, { getLength } from '../data/mockdata';
+// import useritems from '../data/mockdata.json';
 import { Pagination } from 'antd';
 
 // Define reusable class strings
@@ -48,7 +49,7 @@ async function fetchUsers() {
 
 // Using the fetchUsers function
 fetchUsers().then(users => {
-  console.log(users); // Output the users data
+  // console.log(users); // Output the users data
 });
 
 

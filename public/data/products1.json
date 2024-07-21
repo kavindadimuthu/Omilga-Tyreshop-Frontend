@@ -1,0 +1,102 @@
+[
+  {
+    "tyreid": "001",
+    "tyrename": "Ceat",
+    "image": "/TyreImages/tyre-1-a.png",
+    "sizeinfo": "100/90-17 GEN X - TUBELESS",
+    "oldprice": "12,499.00",
+    "newprice": "11,999.00",
+    "description": "The Ceat 100/90-17 GEN X tubeless tyre is designed for superior performance and longevity. Ideal for a variety of motorcycles, this tyre offers excellent grip and stability on both wet and dry surfaces, ensuring a safe and smooth ride.",
+    "specifications": "Size: 100/90-17, Type: Tubeless, Model: GEN X, Tread Pattern: Optimized for better traction, Material: High-quality rubber compounds, Usage: Suitable for city and highway rides."
+  },
+  {
+    "tyreid": "002",
+    "tyrename": "MRF",
+    "image": "/TyreImages/tyre-2-a.png",
+    "sizeinfo": "110/90-17 ZAPPER Q - TUBELESS",
+    "oldprice": "10,499.00",
+    "newprice": "9,999.00",
+    "description": "The MRF 110/90-17 ZAPPER Q is a reliable tubeless tyre that combines durability with excellent performance. It is designed to provide a comfortable and safe riding experience with enhanced grip and stability, making it perfect for long rides.",
+    "specifications": "Size: 110/90-17, Type: Tubeless, Model: ZAPPER Q, Tread Pattern: Advanced for improved traction, Material: High-strength rubber, Usage: Best for both city commuting and long-distance travel."
+  },
+  {
+    "tyreid": "003",
+    "tyrename": "Maxxis",
+    "image": "/TyreImages/tyre-3-a.png",
+    "sizeinfo": "120/80-18 M6302 - TUBELESS",
+    "oldprice": "9,499.00",
+    "newprice": "8,999.00",
+    "description": "The Maxxis 120/80-18 M6302 tubeless tyre is engineered for riders seeking a balance of performance and durability. It offers superior grip on various road conditions, ensuring safety and comfort for daily commuting and longer trips.",
+    "specifications": "Size: 120/80-18, Type: Tubeless, Model: M6302, Tread Pattern: Enhanced for better grip, Material: Premium rubber compounds, Usage: Suitable for urban and rural road conditions."
+  },
+  {
+    "tyreid": "004",
+    "tyrename": "Dunlop",
+    "image": "/TyreImages/tyre-4-a.png",
+    "sizeinfo": "130/70-17 SPORTMAX - TUBELESS",
+    "oldprice": "10,999.00",
+    "newprice": "10,499.00",
+    "description": "The Dunlop 130/70-17 SPORTMAX tubeless tyre is designed for high performance and reliability. It features advanced technology for enhanced grip and handling, making it ideal for sport and touring motorcycles.",
+    "specifications": "Size: 130/70-17, Type: Tubeless, Model: SPORTMAX, Tread Pattern: Sport-oriented for better handling, Material: High-performance rubber, Usage: Suitable for sport and touring bikes."
+  },
+  {
+    "tyreid": "005",
+    "tyrename": "Pirelli",
+    "image": "/TyreImages/tyre-5-a.png",
+    "sizeinfo": "140/70-17 DIABLO - TUBELESS",
+    "oldprice": "13,999.00",
+    "newprice": "13,499.00",
+    "description": "The Pirelli 140/70-17 DIABLO tubeless tyre offers exceptional performance and durability. Its design ensures maximum grip and stability, making it perfect for high-speed riding and aggressive cornering.",
+    "specifications": "Size: 140/70-17, Type: Tubeless, Model: DIABLO, Tread Pattern: Designed for high-speed stability, Material: Advanced rubber compounds, Usage: Ideal for sport and high-performance motorcycles."
+  },
+  {
+    "tyreid": "006",
+    "tyrename": "Ferentino",
+    "image": "/TyreImages/tyre-6-a.png",
+    "sizeinfo": "150/60-17 F101 - TUBELESS",
+    "oldprice": "8,999.00",
+    "newprice": "8,499.00",
+    "description": "The Ferentino 150/60-17 F101 tubeless tyre is built for performance and reliability. It provides excellent traction and stability, making it suitable for various riding conditions, from city streets to open highways.",
+    "specifications": "Size: 150/60-17, Type: Tubeless, Model: F101, Tread Pattern: Optimized for versatile performance, Material: High-durability rubber, Usage: Suitable for both urban and highway riding."
+  },
+  {
+    "tyreid": "007",
+    "tyrename": "Bridgestone",
+    "image": "/TyreImages/tyre-7-a.png",
+    "sizeinfo": "160/60-17 BATTLAX - TUBELESS",
+    "oldprice": "12,999.00",
+    "newprice": "12,499.00",
+    "description": "The Bridgestone 160/60-17 BATTLAX tubeless tyre is engineered for superior performance and longevity. It offers exceptional grip and handling, making it a great choice for sport and touring motorcycles.",
+    "specifications": "Size: 160/60-17, Type: Tubeless, Model: BATTLAX, Tread Pattern: Enhanced for superior grip, Material: High-quality rubber compounds, Usage: Ideal for sport and touring applications."
+  },
+  {
+    "tyreid": "008",
+    "tyrename": "Kumiko",
+    "image": "/TyreImages/tyre-8-a.png",
+    "sizeinfo": "170/60-17 K700 - TUBELESS",
+    "oldprice": "11,999.00",
+    "newprice": "11,499.00",
+    "description": "The Kumiko 170/60-17 K700 tubeless tyre combines advanced design with reliable performance. It ensures excellent traction and stability, making it suitable for a variety of motorcycles and riding conditions.",
+    "specifications": "Size: 170/60-17, Type: Tubeless, Model: K700, Tread Pattern: Advanced for better stability, Material: Premium rubber compounds, Usage: Suitable for various riding conditions."
+  },
+  {
+    "tyreid": "009",
+    "tyrename": "Ceat",
+    "image": "/TyreImages/tyre-1-a.png",
+    "sizeinfo": "100/90-17 GEN X - TUBELESS",
+    "oldprice": "12,499.00",
+    "newprice": "11,999.00",
+    "description": "The Ceat 100/90-17 GEN X tubeless tyre is designed for superior performance and longevity. Ideal for a variety of motorcycles, this tyre offers excellent grip and stability on both wet and dry surfaces, ensuring a safe and smooth ride.",
+    "specifications": "Size: 100/90-17, Type: Tubeless, Model: GEN X, Tread Pattern: Optimized for better traction, Material: High-quality rubber compounds, Usage: Suitable for city and highway rides."
+  },
+  {
+    "tyreid": "0010",
+    "tyrename": "MRF",
+    "image": "/TyreImages/tyre-2-a.png",
+    "sizeinfo": "110/90-17 ZAPPER Q - TUBELESS",
+    "oldprice": "10,499.00",
+    "newprice": "9,999.00",
+    "description": "The MRF 110/90-17 ZAPPER Q is a reliable tubeless tyre that combines durability with excellent performance. It is designed to provide a comfortable and safe riding experience with enhanced grip and stability, making it perfect for long rides.",
+    "specifications": "Size: 110/90-17, Type: Tubeless, Model: ZAPPER Q, Tread Pattern: Advanced for improved traction, Material: High-strength rubber, Usage: Best for both city commuting and long-distance travel."
+  }
+]

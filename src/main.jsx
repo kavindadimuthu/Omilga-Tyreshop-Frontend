@@ -12,7 +12,7 @@ import Singleproductpage from './Pages/Singleproductpage.jsx'
 import Categorypage from './Pages/Categorypage.jsx'
 import Aboutuspage from './Pages/Aboutuspage.jsx'
 import Contactpage from './Pages/Contactpage.jsx'
-import Userpage from './Pages/Userpage.jsx';
+import Adminpage from './Pages/Adminpage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/categories",
-    element: <Categorypage />,
+    element: <Categorypage />
   },
   {
     path: "/about",
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/user",
-    element: <Userpage />,
+    element: <Adminpage />,
   },
   {
     path: "/singleproduct/:id",

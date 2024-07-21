@@ -1,21 +1,60 @@
-import React from 'react'
+import React , { useState , useEffect} from 'react';
+import { Pagination } from 'antd';
 import Productcard from '../Components/Productcard'
 
-import products from '../data/products.json';
+export default function Productlist() {
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState(null);
+  const [limit, setLimit] = useState(15);
 
-function Productlist() {
-  let tyreurl = null;
+  async function fetchUsers() {
+    try {
+      const response = await fetch(`../data/products${page}.json`); // Fetching the data from the JSON file
+      
+      const jsonData = await response.json(); // Parsing the JSON response
+      setData(jsonData);
+  
+    } catch (error) {
+      console.error('Error fetching users:', error);  // Handling errors
+    }
+  }
+
+  useEffect( () => {fetchUsers(page).then()}, [page] );
+
+  const onShowSizeChange = (current, pageSize) => {
+    setLimit(pageSize);
+    setPage(current);
+  };
 
   return (
-    <div className='grid grid-cols-4 gap-4 py-4'>
-      {products.map((product, index) => (
-        <div key={index} >
-          {tyreurl = "singleproduct/"+ product.tyreid}
-          <Productcard tyreurl={tyreurl} tyreid={product.tyreid} tyrename={product.tyrename} image={product.image} sizeinfo={product.sizeinfo} oldprice={product.oldprice} newprice={product.newprice}/>
-        </div>
-      ))}
-    </div>
-  )
-}
+    <>
+    {data ? (
+          <div className='grid grid-cols-4 gap-4 py-4'>
+            {data.map(item => (
+              <div key={item.tyreid}>
 
-export default Productlist
+                <Productcard 
+                  tyreurl={"singleproduct/"+ item.tyreid} 
+                  tyreid={item.tyreid} 
+                  tyrename={item.tyrename} 
+                  image={item.image} 
+                  sizeinfo={item.sizeinfo} 
+                  oldprice={item.oldprice} 
+                  newprice={item.newprice}/>
+
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+
+    <Pagination 
+        total={24}
+        pageSize={limit}
+        current={page}
+        onChange={setPage}
+        showSizeChanger
+        onShowSizeChange={onShowSizeChange} 
+      />
+      </> )}

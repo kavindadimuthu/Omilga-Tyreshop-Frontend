@@ -53,8 +53,6 @@ const users = [{"id":1,"full_name":"Leanor Waddell","first_name":"Gaétane","las
 
 
 
-
-
 const getUsers = function(page, limit) {
 
     let array = [];
