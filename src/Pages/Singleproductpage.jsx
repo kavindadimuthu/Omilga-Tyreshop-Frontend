@@ -1,8 +1,6 @@
 import { React, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "antd";
-import { InputNumber } from "antd";
-import { Tabs } from "antd";
+import { Button , InputNumber , Tabs } from "antd";
 import products from '../data/products.json';
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
