@@ -34,6 +34,40 @@ const Filtermenu = () => {
     { value: 'true', label: 'Tubed' },
   ];
 
+  const fetchAllProducts = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('http://localhost:5000/api/tyre/allTyres');
+      console.log('API Response:', response.data); 
+
+      if (response.data && Array.isArray(response.data.tyres)) {
+        const productsWithImages = response.data.tyres.map(product => {
+          if (product.image && product.image.data) {
+            const binaryData = new Uint8Array(product.image.data.data).reduce((data, byte) => {
+              return data + String.fromCharCode(byte);
+            }, '');
+            const base64Image = `data:${product.image.contentType};base64,${btoa(binaryData)}`;
+
+            return {
+              ...product,
+              image: base64Image
+            };
+          }
+          return product;
+        });
+        setFilteredProducts(productsWithImages);
+      } else {
+        setError('Unexpected response format');
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch filtered tyres:', error);
+      setError('Failed to fetch filtered tyres');
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     const fetchTyreWidths = async () => {
       try {
@@ -76,6 +110,10 @@ const Filtermenu = () => {
     fetchRimSizes();    
   }, []);
 
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
+
   const handleTabChange = (key) => {
     setActiveTabKey(key);
   };
@@ -98,7 +136,6 @@ const Filtermenu = () => {
       if (response.data && Array.isArray(response.data.tyres)) {
         const productsWithImages = response.data.tyres.map(product => {
           if (product.image && product.image.data) {
-            // Convert binary data to base64 string
             const binaryData = new Uint8Array(product.image.data.data).reduce((data, byte) => {
               return data + String.fromCharCode(byte);
             }, '');
@@ -185,7 +222,6 @@ const Filtermenu = () => {
           style={tabPaneStyle}
         >
           <div>
-            {/* Different content for Tab 2 */}
             <span className='text-white text-[1.1em]'>Find the best tyres for your vehicle</span>
             <div style={selectBoxStyles}>
               <Selectdropdown placeholder="Make" options={options4} />
@@ -211,8 +247,8 @@ const Filtermenu = () => {
               tube={product.tube} 
               vehicleCategory={product.vehicleCategory}
               newprice={product.price}
-              oldprice={product.oldPrice || null} // Assuming oldPrice is available, otherwise set to null
-              tyreurl={`details/${product.tyreId}`} // Assuming there's a details page
+              oldprice={product.oldPrice || null} 
+              tyreurl={`details/${product.tyreId}`} 
             />
           </div>
         ))}
