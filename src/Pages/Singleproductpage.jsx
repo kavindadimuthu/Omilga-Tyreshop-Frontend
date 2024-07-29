@@ -18,7 +18,7 @@ function Singleproductpage() {
   const params = useParams();
   let productdata = (null)
 
-  
+  console.log(params);
 
 
     for (let index = 0; index < products.length; index++) {

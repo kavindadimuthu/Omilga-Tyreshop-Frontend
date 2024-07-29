@@ -68,7 +68,7 @@ function Productlist() {
             vehicleCategory={product.vehicleCategory}
             newprice={product.price}
             oldprice={product.oldPrice || null} // Assuming oldPrice is available, otherwise set to null
-            tyreurl={`details/${product.tyreId}`} // Assuming there's a details page
+            tyreurl={`singleproduct/${product.tyreId}`} // Assuming there's a details page
           />
         </div>
       ))}
