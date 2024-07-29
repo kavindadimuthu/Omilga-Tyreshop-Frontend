@@ -15,6 +15,22 @@ import Aboutuspage from './Pages/Aboutuspage.jsx'
 import Contactpage from './Pages/Contactpage.jsx'
 import Userpage from './Pages/Userpage.jsx';
 
+import { createContext, useContext, useState } from 'react';
+
+
+export const MyContext = createContext();
+
+const AppProvider = ({ children }) => {
+  const [value1, setValue1] = useState("");
+  const [value2, setValue2] = useState("");
+
+  return (
+    <MyContext.Provider value={{ value1, setValue1 , value2, setValue2 }}>
+      {children}
+    </MyContext.Provider>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,8 +67,10 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <AppProvider>
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </AppProvider>
 )
 

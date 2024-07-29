@@ -20,7 +20,7 @@ async function fetchUsers() {
 
 // Using the fetchUsers function
 fetchUsers().then(users => {
-  console.log(users); // Output the users data
+  // console.log(users); // Output the users data
 });
 
 function Categorypage() {

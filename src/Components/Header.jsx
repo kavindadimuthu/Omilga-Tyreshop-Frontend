@@ -7,11 +7,15 @@ import { faMagnifyingGlass, faBars, faPhone, faHouseChimney } from '@fortawesome
 import Searchbar from './Searchbar';
 
 
+
 function Header() {
+
     return (
         <header>
             <Navbar />
+            
             <Headerlowbar />
+
         </header>
     )
 }

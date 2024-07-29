@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Tabs, Button } from 'antd';
 import Selectdropdown from './Selectdropdown';
 import axios from 'axios';
+import debounce from 'lodash.debounce';
 import Productcard from './Productcard';
 
+import { useContext } from 'react';
+import { MyContext } from '../main';
+
+import { useLocation } from 'react-router-dom';
+
 const Filtermenu = () => {
+
+  const location = useLocation();
+  
   const [activeTabKey, setActiveTabKey] = useState('1');
   const [tyreWidthOptions, setTyreWidthOptions] = useState([]);
   const [tyreProfileOptions, setTyreProfileOptions] = useState([]);
@@ -16,6 +25,26 @@ const Filtermenu = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+    // Declare state variables
+    const [query, setQuery] = useState('');
+    const [category, setCategory] = useState('');
+
+
+
+  
+
+  const tabPaneStyle = {
+    backgroundColor: '#333333',
+    padding: '16px',
+    borderRadius: '6px'
+  };
+
+  const selectBoxStyles = {
+    marginTop: '1em',
+    display: 'flex',
+    columnGap: '1em',
+  };
 
   const options4 = [
     { value: 'toyota', label: 'Toyota' },
@@ -34,39 +63,6 @@ const Filtermenu = () => {
     { value: 'true', label: 'Tubed' },
   ];
 
-  const fetchAllProducts = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get('http://localhost:5000/api/tyre/allTyres');
-      console.log('API Response:', response.data); 
-
-      if (response.data && Array.isArray(response.data.tyres)) {
-        const productsWithImages = response.data.tyres.map(product => {
-          if (product.image && product.image.data) {
-            const binaryData = new Uint8Array(product.image.data.data).reduce((data, byte) => {
-              return data + String.fromCharCode(byte);
-            }, '');
-            const base64Image = `data:${product.image.contentType};base64,${btoa(binaryData)}`;
-
-            return {
-              ...product,
-              image: base64Image
-            };
-          }
-          return product;
-        });
-        setFilteredProducts(productsWithImages);
-      } else {
-        setError('Unexpected response format');
-      }
-
-      setLoading(false);
-    } catch (error) {
-      console.error('Failed to fetch filtered tyres:', error);
-      setError('Failed to fetch filtered tyres');
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     const fetchTyreWidths = async () => {
@@ -110,9 +106,6 @@ const Filtermenu = () => {
     fetchRimSizes();    
   }, []);
 
-  useEffect(() => {
-    fetchAllProducts();
-  }, []);
 
   const handleTabChange = (key) => {
     setActiveTabKey(key);
@@ -161,21 +154,85 @@ const Filtermenu = () => {
     }
   };
 
-  const tabPaneStyle = {
-    backgroundColor: '#333333',
-    padding: '16px',
-    borderRadius: '6px'
+  useEffect(() => {
+    handleFilterClick();
+  }, []);
+
+
+  const fetchProducts = async (query, category) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get('http://localhost:5000/api/tyre/filterByRegular', {
+        params: {
+          vehicleCategory: category !== 'All products' ? category : undefined,
+          tyreBrand: query,
+        },
+      });
+      if (response.data && Array.isArray(response.data.tyres)) {
+        const productsWithImages = response.data.tyres.map((product) => {
+          if (product.image && product.image.data) {
+            const binaryData = new Uint8Array(product.image.data.data).reduce((data, byte) => data + String.fromCharCode(byte), '');
+            const base64Image = `data:${product.image.contentType};base64,${btoa(binaryData)}`;
+            return { ...product, image: base64Image };
+          }
+          return product;
+        });
+        // console.log(productsWithImages);
+        setFilteredProducts(productsWithImages);
+        // console.log(filteredProducts);
+      } else {
+        setError('Unexpected response format');
+      }
+    } catch (error) {
+      console.error('Failed to fetch filtered tyres:', error);
+      setError('Failed to fetch filtered tyres');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const selectBoxStyles = {
-    marginTop: '1em',
-    display: 'flex',
-    columnGap: '1em',
-  };
+  const debouncedFetchProducts = useCallback(debounce(fetchProducts, 1000), []);
+
+  useEffect(() => {
+    debouncedFetchProducts(query, category);
+  }, [query, category, debouncedFetchProducts]);
+
+
+  useEffect(() => {
+    // const params = new URLSearchParams(location.search);
+    // const query = params.get('search');
+    // const category = params.get('category');
+
+    // Parse the query string
+    const params = new URLSearchParams(location.search);
+    
+    // Extract parameters
+    const queryParam = params.get('search');
+    const categoryParam = params.get('category');
+
+    // Update state
+    setQuery(queryParam);
+    setCategory(categoryParam);
+
+    
+
+  }, [location]);
+
+  useEffect(() => {
+    console.log(query);
+    console.log(category);
+  },[query, category])
+
+
+
+
 
 
   return (
     <div>
+      {/* <p>{value1}</p> */}
+      {/* <p>{value2}</p> */}
       <Tabs onChange={handleTabChange} type="card" activeKey={activeTabKey}>
         <Tabs.TabPane
           tab="FIND BY TYRE DIMENSIONS"
@@ -248,7 +305,7 @@ const Filtermenu = () => {
               vehicleCategory={product.vehicleCategory}
               newprice={product.price}
               oldprice={product.oldPrice || null} 
-              tyreurl={`details/${product.tyreId}`} 
+              tyreurl={`singleproduct/${product.tyreId}`} 
             />
           </div>
         ))}
