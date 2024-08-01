@@ -20,7 +20,6 @@ const Searchbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = (e) => {
-    e.preventDefault();
     if (searchQuery.trim() || selectedOption.trim()) {
       const searchParams = new URLSearchParams();
       if (searchQuery.trim()) searchParams.append('search', searchQuery);
@@ -42,7 +41,7 @@ const Searchbar = () => {
               placeholder="Search your product"
               allowClear
               onChange={(e) => setSearchQuery(e.target.value)}
-              onPressEnter={handleSearch}
+              onSearch={handleSearch}  
             />
           </Space>
         </Space>
