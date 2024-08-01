@@ -19,16 +19,21 @@ import { createContext, useContext, useState } from 'react';
 
 
 export const MyContext = createContext();
+const SearchFilterContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [value1, setValue1] = useState("");
-  const [value2, setValue2] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedOption, setSelectedOption] = useState('All products');
 
   return (
-    <MyContext.Provider value={{ value1, setValue1 , value2, setValue2 }}>
+    <SearchFilterContext.Provider value={{ searchQuery, setSearchQuery, selectedOption, setSelectedOption }}>
       {children}
-    </MyContext.Provider>
+    </SearchFilterContext.Provider>
   );
+};
+
+export const useSearchFilter = () => {
+  return useContext(SearchFilterContext);
 };
 
 const router = createBrowserRouter([
