@@ -115,9 +115,62 @@ const Filtermenu = () => {
   }, []);
 
 
+  // const handleFilterClick = async () => {
+  //   setLoading(true);
+
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:5000/api/tyre/filterTyres",
+  //       {
+  //         params: {
+  //           tyreWidth: selectedTyreWidth,
+  //           profile: selectedTyreProfile,
+  //           rimSize: selectedRimSize,
+  //           tube: selectedTubeType,
+  //           tyreBrand: query,
+  //           vehicleCategory: category !== "All products" ? category : undefined,
+  //         },
+  //       }
+  //     );
+
+  //     console.log("API Response:", response.data);
+
+  //     if (response.data && Array.isArray(response.data.tyres)) {
+  //       const productsWithImages = response.data.tyres.map((product) => {
+  //         if (product.image && product.image.data) {
+  //           const binaryData = new Uint8Array(product.image.data.data).reduce(
+  //             (data, byte) => {
+  //               return data + String.fromCharCode(byte);
+  //             },
+  //             ""
+  //           );
+  //           const base64Image = `data:${
+  //             product.image.contentType
+  //           };base64,${btoa(binaryData)}`;
+
+  //           return {
+  //             ...product,
+  //             image: base64Image,
+  //           };
+  //         }
+  //         return product;
+  //       });
+  //       setFilteredProducts(productsWithImages);
+  //     } else {
+  //       setError("Unexpected response format");
+  //     }
+
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error("Failed to fetch filtered tyres:", error);
+  //     setError("Failed to fetch filtered tyres");
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleFilterClick = async () => {
     setLoading(true);
-
+  
     try {
       const response = await axios.get(
         "http://localhost:5000/api/tyre/filterTyres",
@@ -132,34 +185,34 @@ const Filtermenu = () => {
           },
         }
       );
-
+  
       console.log("API Response:", response.data);
-
+  
       if (response.data && Array.isArray(response.data.tyres)) {
         const productsWithImages = response.data.tyres.map((product) => {
-          if (product.image && product.image.data) {
-            const binaryData = new Uint8Array(product.image.data.data).reduce(
-              (data, byte) => {
-                return data + String.fromCharCode(byte);
-              },
-              ""
-            );
-            const base64Image = `data:${
-              product.image.contentType
-            };base64,${btoa(binaryData)}`;
-
-            return {
-              ...product,
-              image: base64Image,
-            };
-          }
-          return product;
+          const imagesWithBase64 = product.images.map((image) => {
+            if (image.data) {
+              const binaryData = new Uint8Array(image.data.data).reduce(
+                (data, byte) => data + String.fromCharCode(byte),
+                ""
+              );
+              const base64Image = `data:${image.contentType};base64,${btoa(binaryData)}`;
+              return base64Image;
+            }
+            return null;
+          }).filter(img => img !== null);
+  
+          return {
+            ...product,
+            images: imagesWithBase64,
+          };
         });
+  
         setFilteredProducts(productsWithImages);
       } else {
         setError("Unexpected response format");
       }
-
+  
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch filtered tyres:", error);
@@ -167,6 +220,8 @@ const Filtermenu = () => {
       setLoading(false);
     }
   };
+  
+
 
   useEffect(() => {
     // Fetch filtered products only after the initial load is complete
@@ -251,7 +306,7 @@ const Filtermenu = () => {
           <div key={index}>
             <Productcard
               tyrename={product.tyreBrand}
-              image={product.image}
+              images={product.images} // Pass the images array
               tyreWidth={product.tyreWidth}
               profile={product.profile}
               rimSize={product.rimSize}
