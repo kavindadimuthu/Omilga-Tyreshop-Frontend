@@ -209,6 +209,7 @@ const Filtermenu = () => {
         });
   
         setFilteredProducts(productsWithImages);
+        console.log("these are products with converted images:",productsWithImages);
       } else {
         setError("Unexpected response format");
       }
@@ -314,7 +315,7 @@ const Filtermenu = () => {
               vehicleCategory={product.vehicleCategory}
               newprice={product.price}
               oldprice={product.oldPrice || null}
-              tyreurl={`singleproduct/${product.tyreId}`}
+              tyreurl={`singleproduct/${product._id}`}
             />
           </div>
         ))}
