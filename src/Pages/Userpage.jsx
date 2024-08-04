@@ -1,101 +1,240 @@
-import { React, useState } from 'react';
-import getUsers, { getLength } from '../data/mockdata';
-import { Pagination } from 'antd';
+import React from 'react';
+import {
+  Button,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  Upload,
+  message,
+} from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+import axios from 'axios'; // Add axios for HTTP requests
+import Header from '../Components/Header';
 
-// Define reusable class strings
-const cellClass = 'border-collapse border border-slate-700 px-6 py-2';
-const headerClass = 'border-collapse border border-slate-600 px-6 py-4';
+const { Option } = Select;
 
-const TableHeader = () => (
-  <thead>
-    <tr>
-      <th className={headerClass}>id</th>
-      <th className={headerClass}>full_name</th>
-      <th className={headerClass}>first_name</th>
-      <th className={headerClass}>last_name</th>
-      <th className={headerClass}>email</th>
-      <th className={headerClass}>ip_address</th>
-    </tr>
-  </thead>
+const props = {
+  beforeUpload: (file) => {
+    const isPNG = file.type === 'image/png';
+    if (!isPNG) {
+      message.error(`${file.name} is not a png file`);
+    }
+    return isPNG || Upload.LIST_IGNORE;
+  },
+  onChange: (info) => {
+    console.log(info.fileList);
+  },
+};
+
+const selectAfter = (
+  <Select defaultValue=".com">
+    <Option value="mm">mm</Option>
+    <Option value="other">other</Option>
+  </Select>
 );
 
-const TableRow = ({ user }) => (
-  <tr key={user.id}>
-    <td className={cellClass}>{user.id}</td>
-    <td className={cellClass}>{user.full_name}</td>
-    <td className={cellClass}>{user.first_name}</td>
-    <td className={cellClass}>{user.last_name}</td>
-    <td className={cellClass}>{user.email}</td>
-    <td className={cellClass}>{user.ip_address}</td>
-  </tr>
-);
-
-async function fetchUsers() {
-  try {
-    // Fetching the data from the JSON file
-    const response = await fetch('/data/mockdata.json');
-    
-    // Parsing the JSON response
-    const data = await response.json();
-    
-    // Returning the data
-    return data;
-  } catch (error) {
-    // Handling errors
-    console.error('Error fetching users:', error);
+const normFile = (e) => {
+  if (Array.isArray(e)) {
+    return e;
   }
-}
+  return e && e.fileList;
+};
 
-// Using the fetchUsers function
-fetchUsers().then(users => {
-  // console.log(users); // Output the users data
-});
+export default function Adminpage() {
 
+  const onFinish = async (values) => {
+    console.log('Received values:', values);
+  
+    const formData = new FormData();
+    formData.append('tyreBrand', values.tyreBrand);
+    formData.append('tyreWidth', values.tyreWidth);
+    formData.append('profile', values.profile);
+    formData.append('rimSize', values.rimSize);
+    formData.append('tube', values.tube);
+    formData.append('vehicleCategory', values.vehicleCategory);
+    formData.append('makes', values.makes.join(',')); // Join array to comma-separated string
+    formData.append('description', values.description);
+    formData.append('oldPrice', values.oldPrice);
+    formData.append('price', values.price);
+    // Append files to formData
+    if (values.mainImage && values.mainImage[0]) {
+      formData.append('mainImage', values.mainImage[0].originFileObj);
+    }
+    if (values.secondImage && values.secondImage[0]) {
+      formData.append('secondImage', values.secondImage[0].originFileObj);
+    }
+    if (values.thirdImage && values.thirdImage[0]) {
+      formData.append('thirdImage', values.thirdImage[0].originFileObj);
+    }
 
-function Userpage() {
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
-
-  const users = getUsers(page, limit) || []; // Ensure users is always an array
-  const userCount = getLength();
-
-  const onShowSizeChange = (current, pageSize) => {
-    setLimit(pageSize);
-    setPage(current);
+    // Log FormData contents
+  for (let pair of formData.entries()) {
+    console.log(`${pair[0]}: ${pair[1]}`);
+  }
+  
+    try {
+      const response = await axios.post('http://localhost:5000/api/tyre/addTyre', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      if (response.status === 201) {
+        message.success('Data saved successfully');
+      } else {
+        message.error('Failed to save data');
+      }
+    } catch (error) {
+      // Log error response details
+      console.error('Error saving data:', 
+        error.response ?
+        error.response.data :
+        error.message);
+      message.error('Error saving data');
+    }
+    
   };
+  
 
-  const showTotal = (total, range) => {
-    return `${range[0]}-${range[1]} of ${total} items`;
-  };
+  
 
   return (
-    <div className='flex flex-col items-center w-full'>
-      <table className='mt-10 table-auto border-collapse border border-slate-500'>
-        <TableHeader />
-        <tbody>
-          {users.length > 0 ? (
-            users.map(user => user && <TableRow key={user.id} user={user} />)
-          ) : (
-            <tr>
-              <td colSpan="6" className={`${cellClass} text-center`}>
-                No data available
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+    <>
+      <Header />
 
-      <Pagination
-        showSizeChanger
-        onShowSizeChange={onShowSizeChange}
-        current={page}
-        pageSize={limit}
-        total={userCount}
-        onChange={setPage}
-        showTotal={showTotal}
-      />
-    </div>
+      <Form
+        onFinish={onFinish}
+        style={{ maxWidth: '70vw', margin: 'auto' }}
+      >
+        <Form.Item
+          label="Tyre Brand"
+          name="tyreBrand"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Tyre Width"
+          name="tyreWidth"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <InputNumber addonAfter={selectAfter} style={{ width: '100%' }} />
+        </Form.Item>
+
+        <Form.Item
+          label="Tyre Profile"
+          name="profile"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <InputNumber addonAfter="%" style={{ width: '100%' }} />
+        </Form.Item>
+
+        <Form.Item
+          label="Rim Size"
+          name="rimSize"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <InputNumber addonAfter="inches" style={{ width: '100%' }} />
+        </Form.Item>
+
+        <Form.Item
+          label="Tube/Tubeless"
+          name="tube"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <Select>
+            <Option value="Tube">Tube</Option>
+            <Option value="Tubeless">Tubeless</Option>
+          </Select>
+        </Form.Item>
+
+        <Form.Item
+          label="Vehicle Category"
+          name="vehicleCategory"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <Select>
+            <Option value="Motorbike">Motorbike</Option>
+            <Option value="Scooter">Scooter</Option>
+            <Option value="Threewheel">Threewheel</Option>
+            <Option value="Bicycle">Bicycle</Option>
+          </Select>
+        </Form.Item>
+
+        <Form.Item
+          label="Makes"
+          name="makes"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <Select mode="tags" style={{ width: '100%' }} placeholder="Enter makes">
+          </Select>
+        </Form.Item>
+
+        <Form.Item
+          label="Description"
+          name="description"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <Input.TextArea />
+        </Form.Item>
+
+        <Form.Item
+          label="Old Price"
+          name="oldPrice"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <InputNumber prefix="LKR" style={{ width: '100%' }} />
+        </Form.Item>
+
+        <Form.Item
+          label="New Price"
+          name="price"
+          rules={[{ required: true, message: 'Please input!' }]}
+        >
+          <InputNumber prefix="LKR" style={{ width: '100%' }} />
+        </Form.Item>
+
+        <Form.Item
+          label="Main Image"
+          name="mainImage"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <Upload {...props}>
+            <Button icon={<UploadOutlined />}>Upload png only</Button>
+          </Upload>
+        </Form.Item>
+
+        <Form.Item
+          label="Second Image"
+          name="secondImage"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <Upload {...props}>
+            <Button icon={<UploadOutlined />}>Upload png only</Button>
+          </Upload>
+        </Form.Item>
+
+        <Form.Item
+          label="Third Image"
+          name="thirdImage"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <Upload {...props}>
+            <Button icon={<UploadOutlined />}>Upload png only</Button>
+          </Upload>
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 0, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+
+    </>
   );
 }
-
-export default Userpage;

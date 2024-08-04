@@ -19,9 +19,19 @@ const Productcard = (props) => {
     objectFit: "contain",
   };
 
+  // Extract the main image (first image) from the images array
+  const mainImage = props.images && props.images.length > 0 ? props.images[0] : '';
+
   return (
     <div style={containerStyle} className='rounded-[1em] overflow-hidden hover:scale-105 hover:shadow-lg hover:ring-1 hover:ring-[#f1f1f1]'>
-      <img src={props.image} alt="" style={imageStyle} />
+      {/* <img src={props.image} alt="" style={imageStyle} /> */}
+      {mainImage ? (
+        <img src={mainImage} alt="Tyre Image" style={imageStyle} />
+      ) : (
+        <div className="flex items-center justify-center h-48 bg-gray-200">
+          No Image Available
+        </div>
+      )}
       <div className='mt-2 py-2 px-4'>
         {/* <h1>Product ID : {props.tyreid}</h1> */}
         <h1 className='mt-[2px] font-bold text-[1.2em]'>{props.tyrename}</h1>
