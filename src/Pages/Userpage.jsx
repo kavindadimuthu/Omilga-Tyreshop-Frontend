@@ -51,7 +51,7 @@ export default function Adminpage() {
     formData.append('tyreWidth', values.tyreWidth);
     formData.append('profile', values.profile);
     formData.append('rimSize', values.rimSize);
-    formData.append('tube', values.tube);
+    formData.append('tube', values.tube === 'true'); // Ensure tube is boolean
     formData.append('vehicleCategory', values.vehicleCategory);
     formData.append('makes', values.makes.join(',')); // Join array to comma-separated string
     formData.append('description', values.description);
@@ -144,8 +144,8 @@ export default function Adminpage() {
           rules={[{ required: true, message: 'Please input!' }]}
         >
           <Select>
-            <Option value="Tube">Tube</Option>
-            <Option value="Tubeless">Tubeless</Option>
+            <Option value="true">Tube</Option>
+            <Option value="false">Tubeless</Option>
           </Select>
         </Form.Item>
 

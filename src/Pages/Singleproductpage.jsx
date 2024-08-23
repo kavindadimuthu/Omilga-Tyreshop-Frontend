@@ -141,8 +141,8 @@ function Singleproductpage() {
     return (
       <div className="w-6/12 flex flex-col gap-y-6">
         <div className="text-[1.5em] font-bold">
-          <div>{productData.sizeinfo}</div>
-          <div>{productData.tyrename}</div>
+          <span>{productData.tyreWidth}</span> / <span>{productData.profile}</span> - <span>{productData.rimSize}</span> | <span>{productData.tube? 'Tube':'Tubeless'}</span>
+          <div>{productData.tyreBrand}</div>
         </div>
         <div>
           <h1 className="text-[1em]"><s>LKR {productData.oldPrice}</s></h1>
@@ -153,11 +153,13 @@ function Singleproductpage() {
           <InputNumber min={1} max={10} defaultValue={1} />
         </div>
         <div className="flex items-center gap-2">
-          <Button type="primary">Buy Now</Button>
-          <Button>Add to Cart</Button>
+          <Button type="primary">Add to favourites</Button>
+
         </div>
         <div>
-          <b>Make:</b> {productData.make || "Not specified"}
+          <b>Make:</b> {productData.makes.map((make, index) => (
+            <span key={index}> {make} </span>
+          )) || "Not specified"}
         </div>
         <div>
           {productData.description || "No description available"}
