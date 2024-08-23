@@ -6,7 +6,6 @@ import Header from '../Components/Header'
 import Sitepath from '../Components/Sitepath'
 import Sidecategorymenu from '../Components/Sidecategorymenu'
 import Filtermenu from '../Components/Filtermenu'
-import Paginationer from '../Components/Paginationer'
 
 // import { createContext, useContext, useState } from 'react';
 
@@ -34,7 +33,7 @@ function Productpage() {
         </div>
       </div>
 
-      <Paginationer />
+      
 
       <Servicequalities />
 

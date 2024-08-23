@@ -32,7 +32,7 @@ const TableRow = ({ user }) => (
 
 function Userpage() {
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(6);
 
   const users = getUsers(page, limit) || []; // Ensure users is always an array
   const userCount = getLength();

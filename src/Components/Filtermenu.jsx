@@ -4,6 +4,7 @@ import Selectdropdown from "./Selectdropdown";
 import axios from "axios";
 import debounce from "lodash.debounce";
 import Productcard from "./Productcard";
+import { Pagination } from 'antd';
 
 import { useLocation } from "react-router-dom";
 
@@ -26,6 +27,21 @@ const Filtermenu = () => {
   const [category, setCategory] = useState("");
 
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
+  
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(6);
+  const [ userCount, setUserCount] = useState();
+  const [lastProductId, setLastProductId] = useState(null);
+
+  const onShowSizeChange = (current, pageSize) => {
+    setLimit(pageSize);
+    setPage(current);
+  };
+
+  const showTotal = (total, range) => {
+    return `${range[0]}-${range[1]} of ${total} items`;
+  };
 
   useEffect(() => {
     // Parse the query string and set the initial query and category
@@ -168,6 +184,18 @@ const Filtermenu = () => {
   //   }
   // };
 
+
+  const selectedPageProducts = async () => {
+    try{
+      const response = await axios.get("http://localhost:5000/api/tyre/pageAndLimit");
+      console.log("Pagination API Response:", response.data);
+      // setUserCount(response.data.totalProducts);
+      // console.log("Usercount =", userCount);
+    } catch(error){
+      console.log("Pagination API error", error);
+    }
+  }
+
   const handleFilterClick = async () => {
     setLoading(true);
   
@@ -182,11 +210,16 @@ const Filtermenu = () => {
             tube: selectedTubeType,
             tyreBrand: query,
             vehicleCategory: category !== "All products" ? category : undefined,
+            limit: limit,
+            page: page,
+            lastId: lastProductId,
           },
         }
       );
   
       console.log("API Response:", response.data);
+      setUserCount(response.data.totalTyres);
+      setLastProductId(response.data.lastId);
   
       if (response.data && Array.isArray(response.data.tyres)) {
         const productsWithImages = response.data.tyres.map((product) => {
@@ -229,7 +262,14 @@ const Filtermenu = () => {
     if (initialLoadComplete) {
       handleFilterClick();
     }
-  }, [query, category, initialLoadComplete]);
+  }, [query, category, initialLoadComplete, limit, page]);
+
+  
+  console.log("Here Last product id", lastProductId);
+
+  useEffect(() => {
+    selectedPageProducts();
+  },[])
 
   return (
     <div>
@@ -320,6 +360,20 @@ const Filtermenu = () => {
           </div>
         ))}
       </div>
+
+      <div className='w-[auto] m-auto py-2 flex justify-end border-solid border-b-2 border-gray-400'>
+      
+        <Pagination
+        defaultCurrent={1}
+        showSizeChanger
+        onShowSizeChange={onShowSizeChange}
+        current={page}
+        pageSize={limit}
+        total={userCount}
+        onChange={setPage}
+        showTotal={showTotal}
+      />
+    </div>
     </div>
   );
 };
