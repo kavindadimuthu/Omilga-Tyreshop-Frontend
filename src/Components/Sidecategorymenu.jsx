@@ -2,12 +2,16 @@ import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import {motorcycle} from '../assets/motorcycle.png';
+import {scooter} from '../assets/scooter.png';
+import {tuk} from '../assets/tuk-tuk.png';
+import {bicycle} from '../assets/bicycle.png';
 
 const items = [
   {
     key: 'sub1',
     label: 'Motorbike',
-    icon: <MailOutlined />,
+    icon: <img src={motorcycle} alt="Motorbike" />,
     url: '/products?category=bike',
   },
 
@@ -18,7 +22,7 @@ const items = [
   {
     key: 'sub2',
     label: 'Scooter',
-    icon: <MailOutlined />,
+    icon: <img src={scooter} alt="scooter" />,
     url: '/products?category=scooter',
   },
 
@@ -29,7 +33,7 @@ const items = [
   {
     key: 'sub3',
     label: 'Threewheel',
-    icon: <MailOutlined />,
+    icon: <img src={tuk} alt="threewheeler" />,
     url: '/products?category=threewheel',
 
   },
@@ -41,7 +45,7 @@ const items = [
   {
     key: 'sub4',
     label: 'Bicycle',
-    icon: <MailOutlined />,
+    icon: <img src={bicycle} alt="bicycle" />,
     url: '/products?category=bicycle',
     
   },
