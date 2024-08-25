@@ -10,7 +10,7 @@ function Contactpage() {
         <Header/>
 
         <Contactdetailandmapbox/>
-        <Contactform/>
+        {/* <Contactform/> */}
         
         <Footer/>
     </div>

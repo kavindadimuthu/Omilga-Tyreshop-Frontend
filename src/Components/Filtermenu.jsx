@@ -30,7 +30,7 @@ const Filtermenu = () => {
 
   
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(10);
   const [ userCount, setUserCount] = useState();
   const [lastProductId, setLastProductId] = useState(null);
 
