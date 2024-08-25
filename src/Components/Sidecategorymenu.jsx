@@ -2,16 +2,13 @@ import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import {motorcycle} from '../assets/motorcycle.png';
-import {scooter} from '../assets/scooter.png';
-import {tuk} from '../assets/tuk-tuk.png';
-import {bicycle} from '../assets/bicycle.png';
+import { Height } from '@mui/icons-material';
 
 const items = [
   {
     key: 'sub1',
     label: 'Motorbike',
-    icon: <img src={motorcycle} alt="Motorbike" />,
+    icon: <img src="/icon/motorcycle.png" alt="Motorbike" style={{height:"22px", width:"22px"}}/>,
     url: '/products?category=bike',
   },
 
@@ -22,7 +19,7 @@ const items = [
   {
     key: 'sub2',
     label: 'Scooter',
-    icon: <img src={scooter} alt="scooter" />,
+    icon: <img src="/icon/scooter.png" alt="scooter" style={{height:"22px", width:"22px"}}/>,
     url: '/products?category=scooter',
   },
 
@@ -33,7 +30,7 @@ const items = [
   {
     key: 'sub3',
     label: 'Threewheel',
-    icon: <img src={tuk} alt="threewheeler" />,
+    icon: <img src="/icon/tuk-tuk.png" alt="tuk-tuk" style={{height:"22px", width:"22px"}}/>,
     url: '/products?category=threewheel',
 
   },
@@ -45,7 +42,7 @@ const items = [
   {
     key: 'sub4',
     label: 'Bicycle',
-    icon: <img src={bicycle} alt="bicycle" />,
+    icon: <img src="/icon/bicycle.png" alt="bicycle" style={{height:"22px", width:"22px"}}/>,
     url: '/products?category=bicycle',
     
   },
