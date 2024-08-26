@@ -1,124 +1,64 @@
-import React from 'react';
-import {
-  Button,
-  Form,
-  Input,
-  InputNumber,
-  Select,
-  Upload,
-  message,
-} from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import axios from 'axios'; // Add axios for HTTP requests
-import Header from '../Components/Header';
+import React from "react";
+import Motorbike from "/CategoryImages/motorbike.jpg";
+import Scooter from "/CategoryImages/scooter.jpg";
+import Threewheel from "/CategoryImages/threewheel.jpg";
+import Bicycle from "/CategoryImages/bicycle.jpg";
+import Header from "../Components/Header";
 
-const { Option } = Select;
-
-export default function Adminpage() {
-
-
-  // const removeTyre = async (values) => {
-  //   console.log('Received values:', values);
-  
-  //   const formData = new FormData();
-  //   formData.append('tyreBrand', values.tyreBrand);
-  //   formData.append('vehicleCategory', values.vehicleCategory);
-
-  //   // Log FormData contents
-  // // for (let pair of formData.entries()) {
-  // //   console.log(`${pair[0]}: ${pair[1]}`);
-  // // }
-  
-  
-  // try {
-  //   const response = await axios.delete('http://localhost:5000/api/tyre/removeTyre', formData, {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-  //   if (response.status === 201) {
-  //     message.success('Data removed successfully');
-  //   } else {
-  //     message.error('Failed to remove data');
-  //   }
-  // } catch (error) {
-  //   // Log error response details
-  //   console.error('Error removing data:', 
-  //     error.response ?
-  //     error.response.data :
-  //     error.message);
-  //   message.error('Error removing data');
-  // }
-    
-  // };
-  
-
-  const removeTyre = async (values) => {
-    console.log('Received values:', values);
-  
-    try {
-      const response = await axios.delete('http://localhost:5000/api/tyre/removeTyre', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          tyreBrand: values.tyreBrand,
-          vehicleCategory: values.vehicleCategory
-        }
-      });
-  
-      if (response.status === 200) {
-        message.success('Data removed successfully');
-      } else {
-        message.error('Failed to remove data');
-      }
-    } catch (error) {
-      console.error('Error removing data:', 
-        error.response ? error.response.data : error.message);
-      message.error('Error removing data');
-    }
-  };
-  
-
-  
-
+function Categorypage() {
   return (
     <>
       <Header />
-
-      <Form
-        onFinish={removeTyre}
-        style={{ maxWidth: '70vw', margin: 'auto' }}
-      >
-        <Form.Item
-          label="Tyre Brand"
-          name="tyreBrand"
-          rules={[{ required: true, message: 'Please input!' }]}
-        >
-          <Input />
-        </Form.Item>
-       
-
-        <Form.Item
-          label="Vehicle Category"
-          name="vehicleCategory"
-          rules={[{ required: true, message: 'Please input!' }]}
-        >
-          <Select>
-            <Option value="Motorbike">Motorbike</Option>
-            <Option value="Scooter">Scooter</Option>
-            <Option value="Threewheel">Threewheel</Option>
-            <Option value="Bicycle">Bicycle</Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 0, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-
+      <div className="popularcategory-container mt-[50px] flex justify-center">
+      <div className="w-[75vw] flex flex-col gap-y-[20px] items-center ">
+        <h1 className="text-center font-bold text-[50px]">
+          Popular Categories
+        </h1>
+        <div className="flex w-[100%] justify-between gap-x-[10px]">
+          <Categoryboxes
+            image={Motorbike}
+            imagetext="Motorbike"
+            url="/products?category=bike"
+          />
+          <Categoryboxes
+            image={Scooter}
+            imagetext="Scooter"
+            url="/products?category=scooter"
+          />
+          <Categoryboxes
+            image={Threewheel}
+            imagetext="Threewheel"
+            url="/products?category=threewheel"
+          />
+          <Categoryboxes
+            image={Bicycle}
+            imagetext="Bicycle"
+            url="/products?category=bicycle"
+          />
+        </div>
+      </div>
+    </div>
     </>
+    
   );
 }
+
+function Categoryboxes(props) {
+  return (
+    <a
+      href={props.url}
+      className="relative w-[100%] h-[400px] overflow-hidden flex items-center rounded-lg"
+    >
+      <img
+        src={props.image}
+        alt=""
+        className="absolute w-[100%] opacity-90 contrast-125"
+      />
+      <span className="relative w-[100%] h-[100%] pb-[10%] flex justify-center items-end text-white text-[25px] font-bold ">
+        {props.imagetext}
+      </span>
+    </a>
+  );
+}
+
+export default Categorypage;
