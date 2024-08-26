@@ -3,12 +3,12 @@ import { Tabs, Button } from "antd";
 import Selectdropdown from "./Selectdropdown";
 import axios from "axios";
 import debounce from "lodash.debounce";
-import Productcard from "./Productcard";
+import AdminUpdateProductcard from "./AdminUpdateProductcard";
 import { Pagination } from 'antd';
 
 import { useLocation } from "react-router-dom";
 
-const Filtermenu = () => {
+const AdminUpdateFiltermenu = () => {
   const location = useLocation();
   const [activeTabKey, setActiveTabKey] = useState("1");
   const [tyreWidthOptions, setTyreWidthOptions] = useState([]);
@@ -325,27 +325,15 @@ const Filtermenu = () => {
             </div>
           </div>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="FIND BY VEHICLE MODEL" key="2" style={tabPaneStyle}>
-          <div>
-            <span className="text-white text-[1.1em]">
-              Find the best tyres for your vehicle
-            </span>
-            <div style={selectBoxStyles}>
-              <Selectdropdown placeholder="Make" options={options4} />
-              <Selectdropdown placeholder="Model" options={options5} />
-              <Button type="primary">Filter</Button>
-            </div>
-          </div>
-        </Tabs.TabPane>
       </Tabs>
 
       {loading && <div>Loading...</div>}
       {error && <div>{error}</div>}
 
-      <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="grid grid-cols-6 gap-2 p-4">
         {filteredProducts.map((product, index) => (
           <div key={index}>
-            <Productcard
+            <AdminUpdateProductcard
               tyrename={product.tyreBrand}
               images={product.images} // Pass the images array
               tyreWidth={product.tyreWidth}
@@ -355,7 +343,7 @@ const Filtermenu = () => {
               vehicleCategory={product.vehicleCategory}
               newprice={product.price}
               oldprice={product.oldPrice || null}
-              tyreurl={`singleproduct/${product._id}`}
+              tyreurl={`editSingleProduct/${product._id}`}
             />
           </div>
         ))}
@@ -378,4 +366,4 @@ const Filtermenu = () => {
   );
 };
 
-export default Filtermenu;
+export default AdminUpdateFiltermenu;

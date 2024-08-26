@@ -3,12 +3,13 @@ import { Tabs, Button } from "antd";
 import Selectdropdown from "./Selectdropdown";
 import axios from "axios";
 import debounce from "lodash.debounce";
-import Productcard from "./Productcard";
+import AdminProductcard from "./AdminProductcard";
 import { Pagination } from 'antd';
 
 import { useLocation } from "react-router-dom";
+import Searchbar from "./Searchbar";
 
-const Filtermenu = () => {
+const AdminFiltermenu = () => {
   const location = useLocation();
   const [activeTabKey, setActiveTabKey] = useState("1");
   const [tyreWidthOptions, setTyreWidthOptions] = useState([]);
@@ -74,17 +75,6 @@ const Filtermenu = () => {
     columnGap: "1em",
   };
 
-  const options4 = [
-    { value: "toyota", label: "Toyota" },
-    { value: "honda", label: "Honda" },
-    { value: "ford", label: "Ford" },
-  ];
-
-  const options5 = [
-    { value: "corolla", label: "Corolla" },
-    { value: "civic", label: "Civic" },
-    { value: "focus", label: "Focus" },
-  ];
 
   const options6 = [
     { value: "false", label: "Tubeless" },
@@ -130,71 +120,6 @@ const Filtermenu = () => {
     fetchOptions();
   }, []);
 
-
-  // const handleFilterClick = async () => {
-  //   setLoading(true);
-
-  //   try {
-  //     const response = await axios.get(
-  //       "http://localhost:5000/api/tyre/filterTyres",
-  //       {
-  //         params: {
-  //           tyreWidth: selectedTyreWidth,
-  //           profile: selectedTyreProfile,
-  //           rimSize: selectedRimSize,
-  //           tube: selectedTubeType,
-  //           tyreBrand: query,
-  //           vehicleCategory: category !== "All products" ? category : undefined,
-  //         },
-  //       }
-  //     );
-
-  //     console.log("API Response:", response.data);
-
-  //     if (response.data && Array.isArray(response.data.tyres)) {
-  //       const productsWithImages = response.data.tyres.map((product) => {
-  //         if (product.image && product.image.data) {
-  //           const binaryData = new Uint8Array(product.image.data.data).reduce(
-  //             (data, byte) => {
-  //               return data + String.fromCharCode(byte);
-  //             },
-  //             ""
-  //           );
-  //           const base64Image = `data:${
-  //             product.image.contentType
-  //           };base64,${btoa(binaryData)}`;
-
-  //           return {
-  //             ...product,
-  //             image: base64Image,
-  //           };
-  //         }
-  //         return product;
-  //       });
-  //       setFilteredProducts(productsWithImages);
-  //     } else {
-  //       setError("Unexpected response format");
-  //     }
-
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error("Failed to fetch filtered tyres:", error);
-  //     setError("Failed to fetch filtered tyres");
-  //     setLoading(false);
-  //   }
-  // };
-
-
-  const selectedPageProducts = async () => {
-    try{
-      const response = await axios.get("http://localhost:5000/api/tyre/pageAndLimit");
-      console.log("Pagination API Response:", response.data);
-      // setUserCount(response.data.totalProducts);
-      // console.log("Usercount =", userCount);
-    } catch(error){
-      console.log("Pagination API error", error);
-    }
-  }
 
   const handleFilterClick = async () => {
     setLoading(true);
@@ -267,12 +192,12 @@ const Filtermenu = () => {
   
   console.log("Here Last product id", lastProductId);
 
-  useEffect(() => {
-    selectedPageProducts();
-  },[])
 
   return (
     <div>
+      <div className="py-4 flex justify-center bg-slate-500">
+        <Searchbar />
+      </div>
       <Tabs onChange={handleTabChange} type="card" activeKey={activeTabKey}>
         <Tabs.TabPane
           tab="FIND BY TYRE DIMENSIONS"
@@ -281,7 +206,7 @@ const Filtermenu = () => {
         >
           <div>
             <span className="text-white text-[1.1em]">
-              Your path to the perfect set of tyres begins here
+            FIND BY TYRE DIMENSIONS
             </span>
             <div style={selectBoxStyles}>
               <Selectdropdown
@@ -325,27 +250,17 @@ const Filtermenu = () => {
             </div>
           </div>
         </Tabs.TabPane>
-        <Tabs.TabPane tab="FIND BY VEHICLE MODEL" key="2" style={tabPaneStyle}>
-          <div>
-            <span className="text-white text-[1.1em]">
-              Find the best tyres for your vehicle
-            </span>
-            <div style={selectBoxStyles}>
-              <Selectdropdown placeholder="Make" options={options4} />
-              <Selectdropdown placeholder="Model" options={options5} />
-              <Button type="primary">Filter</Button>
-            </div>
-          </div>
-        </Tabs.TabPane>
+        
       </Tabs>
 
       {loading && <div>Loading...</div>}
       {error && <div>{error}</div>}
 
-      <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="grid grid-cols-6 gap-2 p-4">
         {filteredProducts.map((product, index) => (
           <div key={index}>
-            <Productcard
+            <AdminProductcard
+              tyreid={product._id}
               tyrename={product.tyreBrand}
               images={product.images} // Pass the images array
               tyreWidth={product.tyreWidth}
@@ -355,7 +270,9 @@ const Filtermenu = () => {
               vehicleCategory={product.vehicleCategory}
               newprice={product.price}
               oldprice={product.oldPrice || null}
+
               tyreurl={`singleproduct/${product._id}`}
+              onDeleteSuccess={handleFilterClick} // Optional: callback to refresh UI
             />
           </div>
         ))}
@@ -378,4 +295,4 @@ const Filtermenu = () => {
   );
 };
 
-export default Filtermenu;
+export default AdminFiltermenu;
