@@ -17,6 +17,7 @@ import DeleteTyre from './Pages/Admin/DeleteTyre.jsx';
 import EditTyre from './Pages/Admin/EditTyre.jsx';
 
 import { createContext, useContext, useState } from 'react';
+import EditSingleProduct from './Pages/Admin/EditSingleProduct.jsx';
 
 
 export const MyContext = createContext();
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
   {
     path: "/editTyre",
     element: <EditTyre />,
+  },
+  {
+    path: "/editSingleProduct/:id",
+    element: <EditSingleProduct />,
   },
 ]);
 

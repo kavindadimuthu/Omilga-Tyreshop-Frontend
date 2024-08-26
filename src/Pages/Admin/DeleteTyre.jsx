@@ -10,6 +10,7 @@ import {
 } from 'antd';
 import axios from 'axios'; // Add axios for HTTP requests
 import AdminHeader from '../../Components/AdminHeader';
+import AdminFiltermenu from '../../Components/AdminFiltermenu';
 
 const { Option } = Select;
 
@@ -49,38 +50,9 @@ export default function DeleteTyre() {
     <>
       <AdminHeader />
 
-      <Form
-        onFinish={removeTyre}
-        style={{ maxWidth: '70vw', margin: 'auto' }}
-      >
-        <Form.Item
-          label="Tyre Brand"
-          name="tyreBrand"
-          rules={[{ required: true, message: 'Please input!' }]}
-        >
-          <Input />
-        </Form.Item>
-       
+      <div className='w-[85vw] px-[5vw] py-4 mx-auto my-4 bg-slate-200 rounded-xl'><AdminFiltermenu /></div>
 
-        <Form.Item
-          label="Vehicle Category"
-          name="vehicleCategory"
-          rules={[{ required: true, message: 'Please input!' }]}
-        >
-          <Select>
-            <Option value="Motorbike">Motorbike</Option>
-            <Option value="Scooter">Scooter</Option>
-            <Option value="Threewheel">Threewheel</Option>
-            <Option value="Bicycle">Bicycle</Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item wrapperCol={{ offset: 0, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+      
 
     </>
   );

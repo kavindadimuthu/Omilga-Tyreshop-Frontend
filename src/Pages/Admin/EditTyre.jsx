@@ -1,11 +1,14 @@
 import React from 'react'
 import AdminHeader from '../../Components/AdminHeader'
+import AdminUpdateFiltermenu from '../../Components/AdminUpdateFiltermenu'
 
 function EditTyre() {
   return (
     <>
         <AdminHeader />
-        <div>EditTyre</div>
+        <>
+        <div className='w-[85vw] px-[5vw] py-4 mx-auto my-4 bg-slate-200 rounded-xl'><AdminUpdateFiltermenu /></div>
+        </>
     </>
     
   )
