@@ -83,8 +83,8 @@ export default function EditSingleProduct() {
           'Content-Type': 'application/json',
         },
       });
-      if (response.status === 201) {
-        message.success('Data uodated successfully');
+      if (response.status === 200) {
+        message.success('Data updated successfully');
       } else {
         message.error('Failed to update data');
       }
