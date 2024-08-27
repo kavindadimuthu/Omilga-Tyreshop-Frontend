@@ -3,15 +3,14 @@ import { Tabs, Button } from "antd";
 import Selectdropdown from "./Selectdropdown";
 import axios from "axios";
 import debounce from "lodash.debounce";
-import AdminProductcard from "./AdminProductcard";
+import AdminUpdateProductcard from "./AdminUpdateProductcard";
 import { Pagination } from 'antd';
 
 import { useLocation } from "react-router-dom";
 import Searchbar from "./Searchbar";
 
-const AdminFiltermenu = () => {
+const AdminUpdateFiltermenu = () => {
   const location = useLocation();
-  const [activeTabKey, setActiveTabKey] = useState("1");
   const [tyreWidthOptions, setTyreWidthOptions] = useState([]);
   const [tyreProfileOptions, setTyreProfileOptions] = useState([]);
   const [rimSizeOptions, setRimSizeOptions] = useState([]);
@@ -57,26 +56,15 @@ const AdminFiltermenu = () => {
     setInitialLoadComplete(true);
   }, [location]);
 
-  useEffect(() => {
-    console.log(query);
-    console.log(category);
-  }, [query, category]);
-
-
   const selectBoxStyles = {
     display: "flex",
     columnGap: "1em",
   };
 
-
   const options6 = [
     { value: "false", label: "Tubeless" },
     { value: "true", label: "Tubed" },
   ];
-
-  const handleTabChange = (key) => {
-    setActiveTabKey(key);
-  };
 
 
   useEffect(() => {
@@ -188,10 +176,9 @@ const AdminFiltermenu = () => {
 
   return (
     <div>
-      
-      
-      <div className="bg-[#333333] px-6 py-6 rounded-lg flex justify-between">
-            <div style={selectBoxStyles}>
+          <div className="bg-[#333333] px-6 py-6 rounded-lg flex justify-between">
+            
+            <div style={selectBoxStyles} >
               <Selectdropdown
                 placeholder="Tubeless or tubed"
                 options={options6}
@@ -241,8 +228,7 @@ const AdminFiltermenu = () => {
       <div className="grid grid-cols-6 gap-2 py-4">
         {filteredProducts.map((product, index) => (
           <div key={index}>
-            <AdminProductcard
-              tyreid={product._id}
+            <AdminUpdateProductcard
               tyrename={product.tyreBrand}
               images={product.images} // Pass the images array
               tyreWidth={product.tyreWidth}
@@ -252,9 +238,7 @@ const AdminFiltermenu = () => {
               vehicleCategory={product.vehicleCategory}
               newprice={product.price}
               oldprice={product.oldPrice || null}
-
-              tyreurl={`singleproduct/${product._id}`}
-              onDeleteSuccess={handleFilterClick} // Optional: callback to refresh UI
+              tyreurl={`editSingleProduct/${product._id}`}
             />
           </div>
         ))}
@@ -277,4 +261,4 @@ const AdminFiltermenu = () => {
   );
 };
 
-export default AdminFiltermenu;
+export default AdminUpdateFiltermenu;

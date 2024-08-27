@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminHeader from '../../Components/AdminHeader'
-import AdminUpdateFiltermenu from '../../Components/AdminUpdateFiltermenu'
+import AdminUpdateFiltermenu from '../../Components/AdminUpdateFiltermenu-2'
 
 function EditTyre() {
   return (

@@ -1,24 +1,16 @@
 import React from 'react'
 import Footer from '../Components/Footer'
 import Servicequalities from '../Components/Servicequalities'
-// import Productlist from '../Components/Productlist'
 import Header from '../Components/Header'
 import Sitepath from '../Components/Sitepath'
 import Sidecategorymenu from '../Components/Sidecategorymenu'
 import Filtermenu from '../Components/Filtermenu'
 
-// import { createContext, useContext, useState } from 'react';
-
-// Create the context
-// const MyContext = createContext();
-// export const MyContext = createContext();
 
 function Productpage() {
-  // const [value, setValue] = useState("");
 
   return (
     <>
-    {/* <MyContext.Provider value={{ value, setValue }}> */}
       <Header />
 
       <Sitepath />
@@ -28,7 +20,6 @@ function Productpage() {
           <div className='w-5vw'><Sidecategorymenu /></div>
           <div className=''>
             <Filtermenu/>
-            {/* <Productlist /> */}
           </div>
         </div>
       </div>
@@ -38,7 +29,6 @@ function Productpage() {
       <Servicequalities />
 
       <Footer />
-    {/* </MyContext.Provider> */}
     </>
   )
 }
