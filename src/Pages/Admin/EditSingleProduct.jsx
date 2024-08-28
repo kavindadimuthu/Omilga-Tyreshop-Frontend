@@ -12,6 +12,8 @@ import { UploadOutlined } from '@ant-design/icons';
 import axios from 'axios'; // Add axios for HTTP requests
 import { useParams } from "react-router-dom";
 import AdminHeader from '../../Components/AdminHeader';
+const token = localStorage.getItem('token');
+
 
 const { Option } = Select;
 
@@ -81,6 +83,7 @@ export default function EditSingleProduct() {
       const response = await axios.put(`http://localhost:5000/api/tyre/updateTyre/${params.id}`, formData, {
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
       });
       if (response.status === 201) {
