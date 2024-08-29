@@ -2,7 +2,7 @@
   {
     "tyreid": "001",
     "tyrename": "Ceat",
-    "image": "/TyreImages/tyre-1-a.png",
+    "image": ["/TyreImages/tyre-1-a.png"],
     "sizeinfo": "100/90-17 GEN X - TUBELESS",
     "oldprice": "12,499.00",
     "newprice": "11,999.00",
@@ -12,7 +12,7 @@
   {
     "tyreid": "002",
     "tyrename": "MRF",
-    "image": "/TyreImages/tyre-2-a.png",
+    "image": ["/TyreImages/tyre-2-a.png"],
     "sizeinfo": "110/90-17 ZAPPER Q - TUBELESS",
     "oldprice": "10,499.00",
     "newprice": "9,999.00",
@@ -22,7 +22,7 @@
   {
     "tyreid": "003",
     "tyrename": "Maxxis",
-    "image": "/TyreImages/tyre-3-a.png",
+    "image": ["/TyreImages/tyre-3-a.png"],
     "sizeinfo": "120/80-18 M6302 - TUBELESS",
     "oldprice": "9,499.00",
     "newprice": "8,999.00",
@@ -32,7 +32,7 @@
   {
     "tyreid": "004",
     "tyrename": "Dunlop",
-    "image": "/TyreImages/tyre-4-a.png",
+    "image": ["/TyreImages/tyre-4-a.png"],
     "sizeinfo": "130/70-17 SPORTMAX - TUBELESS",
     "oldprice": "10,999.00",
     "newprice": "10,499.00",
@@ -42,7 +42,7 @@
   {
     "tyreid": "005",
     "tyrename": "Pirelli",
-    "image": "/TyreImages/tyre-5-a.png",
+    "image": ["/TyreImages/tyre-5-a.png"],
     "sizeinfo": "140/70-17 DIABLO - TUBELESS",
     "oldprice": "13,999.00",
     "newprice": "13,499.00",
@@ -52,7 +52,7 @@
   {
     "tyreid": "006",
     "tyrename": "Ferentino",
-    "image": "/TyreImages/tyre-6-a.png",
+    "image": ["/TyreImages/tyre-6-a.png"],
     "sizeinfo": "150/60-17 F101 - TUBELESS",
     "oldprice": "8,999.00",
     "newprice": "8,499.00",
@@ -62,7 +62,7 @@
   {
     "tyreid": "007",
     "tyrename": "Bridgestone",
-    "image": "/TyreImages/tyre-7-a.png",
+    "image": ["/TyreImages/tyre-7-a.png"],
     "sizeinfo": "160/60-17 BATTLAX - TUBELESS",
     "oldprice": "12,999.00",
     "newprice": "12,499.00",
@@ -72,7 +72,7 @@
   {
     "tyreid": "008",
     "tyrename": "Kumiko",
-    "image": "/TyreImages/tyre-8-a.png",
+    "image": ["/TyreImages/tyre-8-a.png"],
     "sizeinfo": "170/60-17 K700 - TUBELESS",
     "oldprice": "11,999.00",
     "newprice": "11,499.00",
@@ -82,7 +82,7 @@
   {
     "tyreid": "009",
     "tyrename": "Ceat",
-    "image": "/TyreImages/tyre-1-a.png",
+    "image": ["/TyreImages/tyre-1-a.png"],
     "sizeinfo": "100/90-17 GEN X - TUBELESS",
     "oldprice": "12,499.00",
     "newprice": "11,999.00",
@@ -92,7 +92,7 @@
   {
     "tyreid": "0010",
     "tyrename": "MRF",
-    "image": "/TyreImages/tyre-2-a.png",
+    "image": ["/TyreImages/tyre-2-a.png"],
     "sizeinfo": "110/90-17 ZAPPER Q - TUBELESS",
     "oldprice": "10,499.00",
     "newprice": "9,999.00",

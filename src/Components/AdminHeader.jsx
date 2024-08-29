@@ -28,7 +28,7 @@ function Navbar() {
 
 function Logo() {
     return (
-        <Link to="/"><h1 className="text-3xl font-bold">OMILGA</h1><h2>Admin panel</h2></Link>
+        <Link to="#"><h1 className="text-3xl font-bold">OMILGA</h1><h2>Admin panel</h2></Link>
     )
 
 }

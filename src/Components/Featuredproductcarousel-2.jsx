@@ -4,10 +4,15 @@ import "react-multi-carousel/lib/styles.css";
 import Productcard from './Productcard';
 import products from '../data/products.json';
 import axios from 'axios';
+import tyre1 from "/TyreImages/tyre-1-a.png"
 
 
 
 function Featuredproductcarousel() {
+  if(products){
+    console.log("Yes its working");
+    console.log(products);
+  };
 
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,6 +86,14 @@ function Featuredproductcarousel() {
   return (
     <div className="featuredproductcarousel-container  mt-[50px] flex flex-col items-center">
       <h1 className="text-center font-bold text-[50px]">Featured Products</h1>
+      {/* <img src={products} alt="" /> */}
+      {/* <img src={tyre1} alt="" /> */}
+      {/* {products.map(product => (
+        <div key={product.tyreid}>
+          <p>ID: {product.tyreid}</p>
+          <img src={product.image} alt={product.tyrename} />
+        </div>
+      ))} */}
 
       <Carousel
         swipeable={false}
@@ -101,12 +114,13 @@ function Featuredproductcarousel() {
         // renderDotsOutside={true}
         itemClass="carousel-item-padding-40-px "
       >
+
         {products.map((product, index) => (
           <div key={index} style={{ padding: "0 5px" }}>
             <Productcard
-              tyrename={product.tyreBrand}
-              image={product.image}
-              description={product.description}
+              tyrename={product.tyrename}
+              images={product.image}
+              // sizeinfo={product.description}
               oldprice={product.oldprice}
               newprice={product.newprice}
             />
