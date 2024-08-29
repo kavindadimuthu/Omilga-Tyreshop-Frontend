@@ -101,7 +101,7 @@ function Featuredproductcarousel() {
         // renderDotsOutside={true}
         itemClass="carousel-item-padding-40-px "
       >
-        {allProducts.map((product, index) => (
+        {products.map((product, index) => (
           <div key={index} style={{ padding: "0 5px" }}>
             <Productcard
               tyrename={product.tyreBrand}
