@@ -49,7 +49,7 @@ function Menu() {
                 <Menuitems linkname="About" url="/about" />
                 <Menuitems linkname="Contact" url="/contact" />
                 <Menuitems linkname={
-                    <Avatar shape="square" icon={<UserOutlined />} />} url="/admin" />
+                    <Avatar shape="square" icon={<UserOutlined />} />} url="/login" />
             </ul>
             <FontAwesomeIcon icon={faBars} className="block md:hidden" />
         </div>

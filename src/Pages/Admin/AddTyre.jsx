@@ -11,6 +11,8 @@ import {
 import { UploadOutlined } from '@ant-design/icons';
 import axios from 'axios'; // Add axios for HTTP requests
 import AdminHeader from '../../Components/AdminHeader';
+const token = localStorage.getItem('token');
+
 
 const { Option } = Select;
 
@@ -77,6 +79,7 @@ export default function Adminpage() {
       const response = await axios.post('http://localhost:5000/api/tyre/addTyre', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`,
         },
       });
       if (response.status === 201) {

@@ -16,6 +16,8 @@ import AddTyre from './Pages/Admin/AddTyre.jsx';
 import DeleteTyre from './Pages/Admin/DeleteTyre.jsx';
 import EditTyre from './Pages/Admin/EditTyre.jsx';
 
+import Login from './Components/loginForm.jsx';
+
 import { createContext, useContext, useState } from 'react';
 import EditSingleProduct from './Pages/Admin/EditSingleProduct.jsx';
 
@@ -79,6 +81,10 @@ const router = createBrowserRouter([
     path: "/editSingleProduct/:id",
     element: <EditSingleProduct />,
   },
+  {
+    path: "/login",
+    element: <Login />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
