@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Tabs, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button } from "antd";
 import Selectdropdown from "./Selectdropdown";
 import axios from "axios";
 import Productcard from "./Productcard";
@@ -26,7 +26,6 @@ const Filtermenu = () => {
 
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
-  
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [ userCount, setUserCount] = useState();
@@ -107,11 +106,9 @@ const Filtermenu = () => {
   const selectedPageProducts = async () => {
     try{
       const response = await axios.get("http://localhost:5000/api/tyre/pageAndLimit");
-      console.log("Pagination API Response:", response.data);
-      // setUserCount(response.data.totalProducts);
-      // console.log("Usercount =", userCount);
+      //console.log("Pagination API Response:", response.data);
     } catch(error){
-      console.log("Pagination API error", error);
+      //console.log("Pagination API error", error);
     }
   }
 
@@ -136,7 +133,7 @@ const Filtermenu = () => {
         }
       );
   
-      console.log("API Response:", response.data);
+      //console.log("API Response:", response.data);
       setUserCount(response.data.totalTyres);
       setLastProductId(response.data.lastId);
   
@@ -161,9 +158,9 @@ const Filtermenu = () => {
         });
   
         setFilteredProducts(productsWithImages);
-        console.log("these are products with converted images:",productsWithImages);
+        //console.log("these are products with converted images:",productsWithImages);
       } else {
-        setError("Unexpected response format");
+        //setError("Unexpected response format");
       }
   
       setLoading(false);
@@ -182,9 +179,6 @@ const Filtermenu = () => {
       handleFilterClick();
     }
   }, [query, category, initialLoadComplete, limit, page]);
-
-  
-  console.log("Here Last product id", lastProductId);
 
   useEffect(() => {
     selectedPageProducts();
