@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faHouseChimney } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faHouseChimney, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -40,6 +40,7 @@ function Menu() {
                 <Menuitems linkname="Add-Tyre" url="/admin" />
                 <Menuitems linkname="Edit-Tyre" url="/editTyre" />
                 <Menuitems linkname="Delete-Tyre" url="/deleteTyre" />
+                <Menuitems linkname={<FontAwesomeIcon icon={faRightFromBracket} size="2x"/>} url="/" />
             </ul>
         </div>
     );

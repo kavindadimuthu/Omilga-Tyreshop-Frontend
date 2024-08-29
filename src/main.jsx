@@ -15,8 +15,8 @@ import Contactpage from './Pages/Contactpage.jsx'
 import AddTyre from './Pages/Admin/AddTyre.jsx';
 import DeleteTyre from './Pages/Admin/DeleteTyre.jsx';
 import EditTyre from './Pages/Admin/EditTyre.jsx';
+import Login from './Pages/LoginForm.jsx';
 
-import Login from './Components/loginForm.jsx';
 
 import { createContext, useContext, useState } from 'react';
 import EditSingleProduct from './Pages/Admin/EditSingleProduct.jsx';
@@ -94,4 +94,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
   </AppProvider>
 )
-
