@@ -117,7 +117,7 @@ const Filtermenu = () => {
   
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/tyre/filterTyres",
+        "https://omilgatyreshop-backend.onrender.com/api/tyre/filterTyres",
         {
           params: {
             tyreWidth: selectedTyreWidth,

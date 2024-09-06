@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     svgr()
   ],
+  base: '/Omilga-Tyreshop-Frontend/',
 })
 
 
