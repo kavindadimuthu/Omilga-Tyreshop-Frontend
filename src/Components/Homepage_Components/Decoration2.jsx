@@ -7,12 +7,12 @@ function Decoration2() {
       <img src={Bgtyre} alt="" className='w-[100%] absolute' />
       <div className='relative flex items-center w-[75vw] '>
 
-        <div className='z-20 flex flex-col gap-y-[20px] bg-[#0055aa] p-[75px] text-white'>
-          <h1 className='text-[20px] font-semibold'>CEAT PERFORMANCE</h1>
-          <h2> These are suitable tyres for Bike Brand Model Names  <br />Get ready for the thrill with Zoom D
+        <div className='z-20 flex flex-col gap-y-[20px] bg-[#0055aa] rounded-lg p-[75px] text-white'>
+          <h1 className='text-3xl mb-4 font-semibold'>CEAT PERFORMANCE</h1>
+          <p className='text-lg text-justify'> These are suitable tyres for Bike Brand Model Names  <br />Get ready for the thrill with Zoom D
             radial tyres. <br />If you long for superior performance and <br />control at higher for you!
-          </h2>
-          <a href='/products' className='font-medium'>Go to products</a>
+          </p>
+          <a href='/products' className='text-xl font-medium underline'>Go to products</a>
         </div>
       </div>
 

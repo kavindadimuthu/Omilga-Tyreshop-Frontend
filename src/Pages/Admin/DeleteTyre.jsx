@@ -11,6 +11,8 @@ import {
 import axios from 'axios'; // Add axios for HTTP requests
 import AdminHeader from '../../Components/AdminHeader';
 import AdminFiltermenu from '../../Components/AdminFiltermenu';
+const token = localStorage.getItem('token');
+
 
 const { Option } = Select;
 
@@ -24,6 +26,7 @@ export default function DeleteTyre() {
       const response = await axios.delete('http://localhost:5000/api/tyre/removeTyre', {
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         data: {
           tyreBrand: values.tyreBrand,

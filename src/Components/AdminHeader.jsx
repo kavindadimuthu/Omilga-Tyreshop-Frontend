@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faHouseChimney } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faHouseChimney, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -28,7 +28,7 @@ function Navbar() {
 
 function Logo() {
     return (
-        <Link to="/"><h1 className="text-3xl font-bold">OMILGA</h1><h2>Admin panel</h2></Link>
+        <Link to="#"><h1 className="text-3xl font-bold">OMILGA</h1><h2>Admin panel</h2></Link>
     )
 
 }
@@ -40,6 +40,7 @@ function Menu() {
                 <Menuitems linkname="Add-Tyre" url="/admin" />
                 <Menuitems linkname="Edit-Tyre" url="/editTyre" />
                 <Menuitems linkname="Delete-Tyre" url="/deleteTyre" />
+                <Menuitems linkname={<FontAwesomeIcon icon={faRightFromBracket} size="2x"/>} url="/" />
             </ul>
         </div>
     );

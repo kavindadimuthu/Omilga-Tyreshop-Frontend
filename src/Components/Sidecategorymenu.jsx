@@ -1,8 +1,6 @@
 import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { Height } from '@mui/icons-material';
 
 const items = [
   {
@@ -53,10 +51,6 @@ const items = [
   
   
 ];
-// const Sidecategorymenu = () => {
-//   const onClick = (e) => {
-//     console.log('click ', e);
-//   };
 
 
   const Sidecategorymenu = () => {
@@ -75,7 +69,7 @@ const items = [
       onClick={onClick}
       style={{
         width: 220,
-        fontSize: '15px'
+        fontSize: '15px',
       }}
     //   defaultSelectedKeys={['1']}
     //   defaultOpenKeys={['sub1']}

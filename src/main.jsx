@@ -12,6 +12,10 @@ import Contactpage from './Pages/Contactpage.jsx';
 import AddTyre from './Pages/Admin/AddTyre.jsx';
 import DeleteTyre from './Pages/Admin/DeleteTyre.jsx';
 import EditTyre from './Pages/Admin/EditTyre.jsx';
+import Login from './Pages/LoginForm.jsx';
+
+
+import { createContext, useContext, useState } from 'react';
 import EditSingleProduct from './Pages/Admin/EditSingleProduct.jsx';
 
 import { createContext, useContext, useState } from 'react';
@@ -34,22 +38,52 @@ export const useSearchFilter = () => {
   return useContext(SearchFilterContext);
 };
 
-const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Productpage />} />
-      <Route path="/categories" element={<Categorypage />} />
-      <Route path="/about" element={<Aboutuspage />} />
-      <Route path="/contact" element={<Contactpage />} />
-      <Route path="/singleproduct/:id" element={<Singleproductpage />} />
-      <Route path="/admin" element={<AddTyre />} />
-      <Route path="/deleteTyre" element={<DeleteTyre />} />
-      <Route path="/editTyre" element={<EditTyre />} />
-      <Route path="/editSingleProduct/:id" element={<EditSingleProduct />} />
-    </Routes>
-  </Router>
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/products",
+    element: <Productpage />,
+  },
+  {
+    path: "/categories",
+    element: <Categorypage />,
+  },
+  {
+    path: "/about",
+    element: <Aboutuspage />,
+  },
+  {
+    path: "/contact",
+    element: <Contactpage />,
+  },
+  {
+    path: "/singleproduct/:id",
+    element: <Singleproductpage />,
+  },
+  {
+    path: "/admin",
+    element: <AddTyre />,
+  },
+  {
+    path: "/deleteTyre",
+    element: <DeleteTyre />,
+  },
+  {
+    path: "/editTyre",
+    element: <EditTyre />,
+  },
+  {
+    path: "/editSingleProduct/:id",
+    element: <EditSingleProduct />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  }
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AppProvider>
@@ -57,4 +91,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <App />
     </React.StrictMode>
   </AppProvider>
-);
+)
+
