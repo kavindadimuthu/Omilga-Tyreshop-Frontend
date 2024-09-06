@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+// import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './input.css';
 
 import Home from './Home.jsx';
@@ -18,7 +22,6 @@ import Login from './Pages/LoginForm.jsx';
 import { createContext, useContext, useState } from 'react';
 import EditSingleProduct from './Pages/Admin/EditSingleProduct.jsx';
 
-import { createContext, useContext, useState } from 'react';
 
 export const MyContext = createContext();
 const SearchFilterContext = createContext();
@@ -88,7 +91,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AppProvider>
     <React.StrictMode>
-      <App />
+    <RouterProvider router={router} />
     </React.StrictMode>
   </AppProvider>
 )
