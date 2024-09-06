@@ -100,9 +100,9 @@ const AdminUpdateFiltermenu = () => {
     const fetchOptions = async () => {
       try {
         const [widthsResponse, profilesResponse, rimSizesResponse] = await Promise.all([
-          axios.get("http://localhost:5000/api/tyre/tyreWidths"),
-          axios.get("http://localhost:5000/api/tyre/tyreProfiles"),
-          axios.get("http://localhost:5000/api/tyre/rimSizes"),
+          axios.get("https://omilgatyreshop-backend.onrender.com/api/tyre/tyreWidths"),
+          axios.get("https://omilgatyreshop-backend.onrender.com/api/tyre/tyreProfiles"),
+          axios.get("https://omilgatyreshop-backend.onrender.com/api/tyre/rimSizes"),
         ]);
 
         const widths = widthsResponse.data.map((width) => ({
@@ -187,7 +187,7 @@ const AdminUpdateFiltermenu = () => {
 
   const selectedPageProducts = async () => {
     try{
-      const response = await axios.get("http://localhost:5000/api/tyre/pageAndLimit");
+      const response = await axios.get("https://omilgatyreshop-backend.onrender.com/api/tyre/pageAndLimit");
       console.log("Pagination API Response:", response.data);
       // setUserCount(response.data.totalProducts);
       // console.log("Usercount =", userCount);
@@ -201,7 +201,7 @@ const AdminUpdateFiltermenu = () => {
   
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/tyre/filterTyres",
+        "https://omilgatyreshop-backend.onrender.com/api/tyre/filterTyres",
         {
           params: {
             tyreWidth: selectedTyreWidth,

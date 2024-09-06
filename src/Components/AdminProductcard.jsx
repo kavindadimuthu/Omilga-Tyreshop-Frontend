@@ -30,7 +30,7 @@ const AdminProductcard = (props) => {
   // Function to handle the deletion of the tyre
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/tyre/removeTyre/${props.tyreid}`);
+      const response = await axios.delete(`https://omilgatyreshop-backend.onrender.com/api/tyre/removeTyre/${props.tyreid}`);
       if (response.status === 200) {
         alert('Tyre deleted successfully');
         // Optionally, refresh the product list or remove the card from the UI

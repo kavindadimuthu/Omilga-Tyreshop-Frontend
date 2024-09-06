@@ -10,7 +10,7 @@ function Productlist() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/tyre/allTyres/');
+        const response = await axios.get('https://omilgatyreshop-backend.onrender.com/api/tyre/allTyres/');
         
         console.log('API Response:', response.data); // Log the response for debugging
 

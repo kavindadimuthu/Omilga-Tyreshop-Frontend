@@ -22,7 +22,7 @@ function Singleproductpage() {
     setError(null);
 
     try {
-      const response = await axios.get(`http://localhost:5000/api/tyre/filterById/${params.id}`);
+      const response = await axios.get(`https://omilgatyreshop-backend.onrender.com/api/tyre/filterById/${params.id}`);
       console.log("API response:",response.data);
 
       if (response.data && response.data.tyres) {

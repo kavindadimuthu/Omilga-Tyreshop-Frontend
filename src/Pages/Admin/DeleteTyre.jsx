@@ -23,7 +23,7 @@ export default function DeleteTyre() {
     console.log('Received values:', values);
   
     try {
-      const response = await axios.delete('http://localhost:5000/api/tyre/removeTyre', {
+      const response = await axios.delete('https://omilgatyreshop-backend.onrender.com/api/tyre/removeTyre', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,

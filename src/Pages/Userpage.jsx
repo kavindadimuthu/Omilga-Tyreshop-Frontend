@@ -74,7 +74,7 @@ export default function Adminpage() {
   }
   
     try {
-      const response = await axios.post('http://localhost:5000/api/tyre/addTyre', formData, {
+      const response = await axios.post('https://omilgatyreshop-backend.onrender.com/api/tyre/addTyre', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

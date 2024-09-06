@@ -80,7 +80,7 @@ export default function EditSingleProduct() {
   }
   
     try {
-      const response = await axios.put(`http://localhost:5000/api/tyre/updateTyre/${params.id}`, formData, {
+      const response = await axios.put(`https://omilgatyreshop-backend.onrender.com/api/tyre/updateTyre/${params.id}`, formData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
