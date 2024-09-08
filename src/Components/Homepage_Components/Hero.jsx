@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'antd';
+
 import sliderimg1 from '/SliderImages/img1.jpg'
 import sliderimg2 from '/SliderImages/img2.jpg'
 import sliderimg3 from '/SliderImages/img3.jpg'

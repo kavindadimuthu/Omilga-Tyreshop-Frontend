@@ -1,37 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-// import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import './input.css';
+import React from "react";
+import { createContext, useContext, useState } from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./input.css";
 
-import Home from './Home.jsx';
-import Productpage from './Pages/Productpage.jsx';
-import Singleproductpage from './Pages/Singleproductpage.jsx';
-import Categorypage from './Pages/Categorypage.jsx';
-import Aboutuspage from './Pages/Aboutuspage.jsx';
-import Contactpage from './Pages/Contactpage.jsx';
-import AddTyre from './Pages/Admin/AddTyre.jsx';
-import DeleteTyre from './Pages/Admin/DeleteTyre.jsx';
-import EditTyre from './Pages/Admin/EditTyre.jsx';
-import Login from './Pages/LoginForm.jsx';
-
-
-import { createContext, useContext, useState } from 'react';
-import EditSingleProduct from './Pages/Admin/EditSingleProduct.jsx';
-
+import Home from "./Home.jsx";
+import Productpage from "./Pages/Productpage.jsx";
+import Singleproductpage from "./Pages/Singleproductpage.jsx";
+import Categorypage from "./Pages/Categorypage.jsx";
+import Aboutuspage from "./Pages/Aboutuspage.jsx";
+import Contactpage from "./Pages/Contactpage.jsx";
+import AddTyre from "./Pages/Admin/AddTyre.jsx";
+import DeleteTyre from "./Pages/Admin/DeleteTyre.jsx";
+import EditTyre from "./Pages/Admin/EditTyre.jsx";
+import Login from "./Pages/LoginForm.jsx";
+import EditSingleProduct from "./Pages/Admin/EditSingleProduct.jsx";
 
 export const MyContext = createContext();
 const SearchFilterContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedOption, setSelectedOption] = useState('All products');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedOption, setSelectedOption] = useState("All products");
 
   return (
-    <SearchFilterContext.Provider value={{ searchQuery, setSearchQuery, selectedOption, setSelectedOption }}>
+    <SearchFilterContext.Provider
+      value={{ searchQuery, setSearchQuery, selectedOption, setSelectedOption }}
+    >
       {children}
     </SearchFilterContext.Provider>
   );
@@ -85,14 +80,13 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
-  }
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <AppProvider>
     <React.StrictMode>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </React.StrictMode>
   </AppProvider>
-)
-
+);

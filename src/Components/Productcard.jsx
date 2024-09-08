@@ -4,7 +4,7 @@ import { Padding } from '@mui/icons-material';
 
 const Productcard = (props) => {
   const containerStyle = {
-    width: "100%",
+    width: "225px",
     backgroundColor: "#f1f1f1",
     borderRadius: "1em",
     overflow: "hidden",

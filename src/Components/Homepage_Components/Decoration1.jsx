@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Rollingtyre from '/rolling-tyre.webp'
 
 function Decoration1() {

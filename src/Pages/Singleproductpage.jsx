@@ -7,6 +7,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { useEffect } from "react";
 import axios from "axios";
+import Sitepath from "../Components/Sitepath";
 
 function Singleproductpage() {
   const params = useParams();
@@ -78,6 +79,7 @@ function Singleproductpage() {
   return (
     <>
       <Header />
+      <Sitepath/>
       {loading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       <div className="w-[75vw] mt-10 m-auto flex gap-10">

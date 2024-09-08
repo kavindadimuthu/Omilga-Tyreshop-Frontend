@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Motorbike from '/CategoryImages/motorbike.jpg'
 import Scooter from '/CategoryImages/scooter.jpg'
 import Threewheel from '/CategoryImages/threewheel.jpg'
@@ -17,14 +18,10 @@ function Popularcategories() {
                 </div>
             </div>
         </div>
-
     )
 }
 
 function Categoryboxes(props) {
-
-   
-
     return (
         <a href={props.url} className='relative w-[100%] h-[400px] overflow-hidden flex items-center rounded-lg'>
             <img src={props.image} alt="" className='absolute w-[100%] opacity-90 contrast-125' />
