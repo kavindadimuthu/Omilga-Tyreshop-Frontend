@@ -48,24 +48,24 @@ const Navbar = () => {
       </div>
       
       <div className="py-1">
-        <a href="/profile" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+        <Link to="/profile" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
           <User className="w-4 h-4 mr-3 text-gray-500" />
           Profile
-        </a>
+        </Link>
         {!isAdmin && (
-          <a href="/profile#watchlist" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <Link to="/profile#watchlist" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             <Heart className="w-4 h-4 mr-3 text-gray-500" />
             Watchlist
-          </a>
+          </Link>
         )}
       </div>
 
       {isAdmin && (
         <div className="py-1 border-t border-gray-100">
-          <a href="/admin/dashboard" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <Link to="/admin/dashboard" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
             <Settings className="w-4 h-4 mr-3 text-gray-500" />
             Admin Dashboard
-          </a>
+          </Link>
         </div>
       )}
 
