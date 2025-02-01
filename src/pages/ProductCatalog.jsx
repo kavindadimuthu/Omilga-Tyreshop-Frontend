@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { useParams } from "react-router-dom";
 import { Search, Filter, X, Check, Star } from 'lucide-react';
+import { Link } from "react-router-dom";
 import Layout from '../components/Layout';
 import useTyreProducts from "../hooks/useTyreProducts";
 import useTyreProduct from "../hooks/useTyreProduct";
@@ -169,9 +170,9 @@ const ProductCatalog = () => {
                     </p>
                     <div className="flex items-center justify-between mt-4">
                       <span className="text-xl font-bold text-blue-900">LKR {tyre.price}</span>
-                      <a href={`/product/${tyre._id}`} className="bg-blue-900 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-800 transition-colors">
+                      <Link to={`/product/${tyre._id}`} className="bg-blue-900 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-800 transition-colors">
                         View Specs
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

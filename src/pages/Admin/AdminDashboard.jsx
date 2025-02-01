@@ -9,6 +9,7 @@ import {
   Save,
   AlertCircle,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { 
   Dialog,
   DialogContent,
@@ -141,10 +142,10 @@ const ProductList = () => {
     <AdminLayout>
       <div className="mb-8 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Manage Products</h1>
-        <a href="/admin/add-product" className="bg-blue-900 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-blue-800">
+        <Link to="/admin/add-product" className="bg-blue-900 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-blue-800">
           <Plus className="w-5 h-5" />
           <span>Add New Product</span>
-        </a>
+        </Link>
       </div>
 
       {/* Notification */}
@@ -319,13 +320,13 @@ const ProductList = () => {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex space-x-2">
-                        <a 
-                          href={`/admin/edit-product/${tyre._id}`}
+                        <Link 
+                          to={`/admin/edit-product/${tyre._id}`}
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"
                           title="Edit product"
                         >
                           <Edit className="w-5 h-5" />
-                        </a>
+                        </Link>
                         <button
                           className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
                           onClick={() => confirmDelete(tyre)}

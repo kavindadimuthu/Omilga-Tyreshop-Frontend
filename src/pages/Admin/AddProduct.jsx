@@ -11,6 +11,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, Input, Textarea, Card, Alert } from '../../components/ui';
 import AdminLayout from "../../components/AdminLayout"
 import useAddTyre from "../../hooks/useAddTyre";

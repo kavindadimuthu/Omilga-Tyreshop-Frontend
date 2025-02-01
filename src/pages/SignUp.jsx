@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Lock, User, Phone, ArrowRight } from 'lucide-react';
+import { Link } from "react-router-dom";
 import Layout from '../components/Layout';
 
 const Signup = () => {
@@ -117,7 +118,7 @@ const Signup = () => {
           </form>
           <p className="mt-6 text-center text-gray-600">
             Already have an account?{' '}
-            <a href="/login" className="text-blue-900 hover:text-blue-700 font-semibold">Sign in</a>
+            <Link to="/login" className="text-blue-900 hover:text-blue-700 font-semibold">Sign in</Link>
           </p>
         </div>
       </div>

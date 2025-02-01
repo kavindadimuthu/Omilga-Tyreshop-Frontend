@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { Link } from "react-router-dom";
 import Layout from '../components/Layout';
 
 const Login = () => {
@@ -84,7 +85,7 @@ const Login = () => {
           </form>
           <p className="mt-6 text-center text-gray-600">
             Don't have an account?{' '}
-            <a href="/signup" className="text-blue-900 hover:text-blue-700 font-semibold">Sign up</a>
+            <Link to="/signup" className="text-blue-900 hover:text-blue-700 font-semibold">Sign up</Link>
           </p>
         </div>
       </div>
