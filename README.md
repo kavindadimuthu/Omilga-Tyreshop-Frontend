@@ -4,7 +4,7 @@ Welcome to the Omilga Tyreshop project! This project is a website for a tyreshop
 
 ## Live Demo
 
-Check out the live demo of the project: [Omilga Tyreshop](https://omilga-tyreshop-frontend.vercel.app/)
+Check out the live demo of the project: [Omilga Tyreshop](https://omilga-tyreshop.vercel.app/)
 
 ## User Credentials
 
