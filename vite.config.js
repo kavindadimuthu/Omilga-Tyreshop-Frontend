@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // base: '/Omilga-Tyreshop-Frontend/', // Ensure this matches your repository name
   plugins: [
     react(),
     tailwindcss(),
