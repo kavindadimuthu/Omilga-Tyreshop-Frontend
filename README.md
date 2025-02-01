@@ -2,8 +2,13 @@
 
 Welcome to the Omilga Tyreshop project! This project is a website for a tyreshop that displays available tyres and their details, as well as the services provided by the shop. This project was developed by us to learn and enhance our MERN stack and web development skills. We are excited to share this as an open-source project with the developer community.
 
+## Live Demo
+
+Check out the live demo of the project: [Omilga Tyreshop](https://omilga-tyreshop-frontend.vercel.app/)
+
 ## Table of Contents
 
+- Screenshots
 - Features
 - Technologies Used
 - Project Structure
@@ -11,6 +16,20 @@ Welcome to the Omilga Tyreshop project! This project is a website for a tyreshop
 - Usage
 - Contributing
 - License
+
+## Screenshots
+
+### Home Page
+![Home Page](/screenshots/homepage-hero.png)
+
+### Product Page
+![Product Page](/screenshots/products-catalogue.png)
+
+### Services Page
+![Services Page](/screenshots/services.png)
+
+### Admin Dashboard
+![Admin Dashboard](/screenshots/admin-dashboard.png)
 
 ## Features
 
