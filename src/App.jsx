@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import ProductCatalog from "./pages/ProductCatalog";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Signup from "./pages/SignUp";
 import UserProfilePage from "./pages/UserProfilePage";
 import { ProductList } from "./pages/Admin/AdminDashboard";
 import AboutUs from "./pages/AboutUs";
