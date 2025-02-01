@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Package, LogOut, PhoneCall, Mail, Facebook, Twitter, Instagram, User, Settings, ShoppingBag, Heart } from 'lucide-react';
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AdminLayout = ({ children }) => {
   const { user, logout, isAdmin } = useAuth(); // Access logout function from AuthContext
@@ -36,24 +37,24 @@ const AdminLayout = ({ children }) => {
       </div>
 
       <div className="py-1">
-        <a
-          href="/profile"
+        <Link
+          to="/profile"
           className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
         >
           <User className="w-4 h-4 mr-3 text-gray-500" />
           Profile
-        </a>
+        </Link>
       </div>
 
       {isAdmin && (
         <div className="py-1 border-t border-gray-100">
-          <a
-            href="/admin/dashboard"
+          <Link
+            to="/admin/dashboard"
             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             <Settings className="w-4 h-4 mr-3 text-gray-500" />
             Admin Dashboard
-          </a>
+          </Link>
         </div>
       )}
 
@@ -77,24 +78,24 @@ const AdminLayout = ({ children }) => {
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold text-white">Omilga</div>
             <div className="hidden md:flex space-x-8">
-              <a href="/" className="text-white hover:text-blue-700">
+              <Link to="/" className="text-white hover:text-blue-700">
                 Home
-              </a>
-              <a href="/products" className="text-white hover:text-blue-700">
+              </Link>
+              <Link to="/products" className="text-white hover:text-blue-700">
                 Products
-              </a>
-              <a href="/about" className="text-white hover:text-blue-700">
+              </Link>
+              <Link to="/about" className="text-white hover:text-blue-700">
                 About
-              </a>
-              <a href="/contact" className="text-white hover:text-blue-700">
+              </Link>
+              <Link to="/contact" className="text-white hover:text-blue-700">
                 Contact
-              </a>
-              <a
-                href="/admin/dashboard"
+              </Link>
+              <Link
+                to="/admin/dashboard"
                 className="text-white hover:text-blue-700"
               >
                 Dashboard
-              </a>
+              </Link>
             </div>
             <div className="flex items-center space-x-4">
               {user ? (
@@ -114,12 +115,12 @@ const AdminLayout = ({ children }) => {
                   <ProfileDropdown />
                 </div>
               ) : (
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800"
                 >
                   Login
-                </a>
+                </Link>
               )}
             </div>
           </div>
@@ -130,13 +131,13 @@ const AdminLayout = ({ children }) => {
         <div className="mt-20">
           {/* <div className="text-2xl font-bold mb-8">Omilga Admin</div> */}
           <nav className="space-y-2">
-            <a
-              href="#"
+            <Link
+              to="#"
               className="flex items-center space-x-2 bg-blue-800 text-white p-3 rounded-lg"
             >
               <Package className="w-5 h-5" />
               <span>Products</span>
-            </a>
+            </Link>
           </nav>
         </div>
 
