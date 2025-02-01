@@ -10,13 +10,8 @@ Check out the live demo of the project: [Omilga Tyreshop](https://omilga-tyresho
 
 You can use the following credentials to log in as a user or admin:
 
-### User
-- **Email:** jacksparrow@mail.com
-- **Password:** 1234
-
-### Admin
-- **Email:** admin@mail.com
-- **Password:** 1234
+- **User** - Email: jacksparrow@mail.com , Password: 1234
+- **Admin** - Email: admin@mail.com , Password: 1234
 
 ## Table of Contents
 
