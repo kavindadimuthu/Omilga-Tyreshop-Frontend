@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { PhoneCall, Mail, Facebook, Twitter, Instagram, User, Settings, LogOut, ShoppingBag, Heart } from 'lucide-react';
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -103,12 +104,12 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold text-blue-900">Omilga</div>
             <div className="hidden md:flex space-x-8">
-              <a href="/" className="text-blue-900 hover:text-blue-700">Home</a>
-              <a href="/products" className="text-blue-900 hover:text-blue-700">Products</a>
-              <a href="/services" className="text-blue-900 hover:text-blue-700">Services</a>
-              <a href="/about" className="text-blue-900 hover:text-blue-700">About</a>
-              <a href="/contact" className="text-blue-900 hover:text-blue-700">Contact</a>
-              {isAdmin && <a href="/admin/dashboard" className="text-blue-900 hover:text-blue-700">Dashboard</a>}
+              <Link to="/" className="text-blue-900 hover:text-blue-700">Home</Link>
+              <Link to="/products" className="text-blue-900 hover:text-blue-700">Products</Link>
+              <Link to="/services" className="text-blue-900 hover:text-blue-700">Services</Link>
+              <Link to="/about" className="text-blue-900 hover:text-blue-700">About</Link>
+              <Link to="/contact" className="text-blue-900 hover:text-blue-700">Contact</Link>
+              {isAdmin && <Link to="/admin/dashboard" className="text-blue-900 hover:text-blue-700">Dashboard</Link>}
             </div>
             <div className="flex items-center space-x-4">
               {user ? (
