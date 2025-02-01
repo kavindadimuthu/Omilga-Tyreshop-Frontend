@@ -20,16 +20,16 @@ Check out the live demo of the project: [Omilga Tyreshop](https://omilga-tyresho
 ## Screenshots
 
 ### Home Page
-![Home Page](/screenshots/homepage-hero.png)
+![Home Page](/public/screenshots/homepage-hero.png)
 
 ### Product Page
-![Product Page](/screenshots/products-catalogue.png)
+![Product Page](/public/screenshots/products-catalogue.png)
 
 ### Services Page
-![Services Page](/screenshots/services.png)
+![Services Page](/public/screenshots/services.png)
 
 ### Admin Dashboard
-![Admin Dashboard](/screenshots/admin-dashboard.png)
+![Admin Dashboard](/public/screenshots/admin-dashboard.png)
 
 ## Features
 
