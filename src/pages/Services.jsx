@@ -1,32 +1,37 @@
 import React, { useEffect } from 'react';
 import { Wrench, RotateCw, Move } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 
-const ServiceCard = ({ icon: Icon, title, description, features, id }) => (
-    <div id={id} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow scroll-mt-24">
-      <div className="flex items-center mb-6">
-        <div className="bg-blue-900 p-3 rounded-full">
-          <Icon className="w-6 h-6 text-white" />
-        </div>
-        <h3 className="text-2xl font-bold text-blue-900 ml-4">{title}</h3>
+const ServiceCard = ({ icon: Icon, title, description, features, id }) => {
+  const navigate = useNavigate();
+
+  return (
+      <div id={id} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow scroll-mt-24">
+          <div className="flex items-center mb-6">
+              <div className="bg-blue-900 p-3 rounded-full">
+                  <Icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-blue-900 ml-4">{title}</h3>
+          </div>
+          <p className="text-gray-600 mb-6">{description}</p>
+          <ul className="space-y-3">
+              {features.map((feature, index) => (
+                  <li key={index} className="flex items-center text-gray-700">
+                      <div className="w-2 h-2 bg-blue-900 rounded-full mr-3"></div>
+                      {feature}
+                  </li>
+              ))}
+          </ul>
+          <button 
+              className="mt-6 w-full bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+              onClick={() => navigate('/contact')}
+          >
+              Book Service
+          </button>
       </div>
-      <p className="text-gray-600 mb-6">{description}</p>
-      <ul className="space-y-3">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center text-gray-700">
-            <div className="w-2 h-2 bg-blue-900 rounded-full mr-3"></div>
-            {feature}
-          </li>
-        ))}
-      </ul>
-      <button 
-        className="mt-6 w-full bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
-        onClick={() => window.location.href = '/contact'}
-      >
-        Book Service
-      </button>
-    </div>
-);
+  );
+};
 
 const ServicesPage = () => {
     useEffect(() => {
