@@ -3,6 +3,8 @@ import { Mail, Lock, User, Phone, ArrowRight } from 'lucide-react';
 import { Link } from "react-router-dom";
 import Layout from '../components/Layout';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     username: '',
@@ -21,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     setMessage('');
     try {
-      const response = await fetch("http://localhost:5000/api/user/register", {
+      const response = await fetch(`${API_BASE_URL}/api/user/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
